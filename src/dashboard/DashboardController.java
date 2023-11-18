@@ -52,7 +52,7 @@ public class DashboardController {
         for (int i = 0; i < nav_pane.length; i++){
             if (btn_src == nav_btn[i]){
                 nav_pane[i].setVisible(true);
-                nav_btn[i].setStyle("-fx-background-color: rgba(255, 255, 255, 0.1);");
+                nav_btn[i].setStyle("-fx-background-color: rgba(255, 255, 255, 0.2);");
             }
         }
     }
