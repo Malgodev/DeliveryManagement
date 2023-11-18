@@ -7,23 +7,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : binhp
 */
 
-.top-form{
-    -fx-background-color: #fff;
-    -fx-border-color: #000;
-    -fx-border-width: .4px .4px .2px .4px;
-}
-
-.semi-top-form{
-    -fx-background-color: #efefef;
-    -fx-border-color: #000;
-    -fx-border-width: .2px .4px .8px .4px;
-}
-
 .nav-form{
-    -fx-background-color:linear-gradient(to top right, #A75D5D, #F0997D)
+    -fx-background-color:linear-gradient(to top, #A75D5D, #F0997D)
 }
 
-.nav-btn{
+.nav-on-btn{
     -fx-background-color: rgba(255, 255, 255, 0.2);
     -fx-cursor:hand;
     -fx-font-family:"Arial";
@@ -32,11 +20,31 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-alignment:CENTER_LEFT;
 }
 
-.nav-btn2{
+.nav-btn{
     -fx-background-color: transparent;
     -fx-cursor:hand;
     -fx-font-family:"Arial";
     -fx-font-size: 14px;
     -fx-text-fill: #fff;
     -fx-alignment:CENTER_LEFT;
+}
+
+.nav-btn:hover{
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-cursor:hand;
+    -fx-font-family:"Arial";
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+    -fx-alignment:CENTER_LEFT; 
+}
+
+.pane{
+    -fx-background-color: #fff;
+    -fx-background-radius: 20px;
+}
+
+.card{
+    -fx-background-color: #FFC3A1;
+    -fx-background-radius: 10px;
+
 }
