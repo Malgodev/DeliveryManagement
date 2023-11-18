@@ -3,6 +3,8 @@ package dashboard;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -10,10 +12,40 @@ public class DashboardController {
     
 
     @FXML
+    private TextField address_rcv_tf;
+
+    @FXML
+    private TextField address_snd_tf;
+
+    @FXML
+    private ComboBox<?> city_rcv_tf;
+
+    @FXML
+    private ComboBox<?> city_snd_tf;
+
+    @FXML
+    private TextField email_rcv_tf;
+
+    @FXML
+    private TextField email_snd_id;
+
+    @FXML
+    private TextField fname_rcv_tf;
+
+    @FXML
+    private TextField fname_snd_tf;
+
+    @FXML
     private Button home_btn;
 
     @FXML
     private AnchorPane home_pane;
+
+    @FXML
+    private TextField lname_rcv_tf;
+
+    @FXML
+    private TextField lname_snd_tf;
 
     @FXML
     private Button manage_btn;
@@ -28,16 +60,37 @@ public class DashboardController {
     private AnchorPane order_pane;
 
     @FXML
+    private TextField phone_rcv_tf;
+
+    @FXML
+    private TextField phone_snd_tf;
+
+    @FXML
     private Button report_btn;
 
     @FXML
     private AnchorPane report_pane;
 
     @FXML
+    private ComboBox<?> road_snd_tf;
+
+    @FXML
     private Button search_btn;
 
     @FXML
-    private AnchorPane search_pane; 
+    private AnchorPane search_pane;
+
+    @FXML
+    private ComboBox<?> state_rcv_tf;
+
+    @FXML
+    private ComboBox<?> state_snd_tf;
+
+    @FXML
+    private ComboBox<?> town_rcv_id;
+
+    @FXML
+    private ComboBox<?> town_snd_tf;
     
     @FXML
     public void switchForm(MouseEvent event){
@@ -57,4 +110,10 @@ public class DashboardController {
         }
     }
     
+    @FXML
+    private void submitForm(){
+        OrderController orderController = new OrderController();
+        String status = orderController.checkCusForm(fname_snd_tf, lname_snd_tf, phone_snd_tf, email_snd_id, address_snd_tf, state_snd_tf, city_snd_tf);
+        System.out.println(status);
+    }
 }
