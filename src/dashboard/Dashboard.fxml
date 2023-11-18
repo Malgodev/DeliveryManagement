@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" scaleShape="false" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dashboard.DashboardController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <left>
+                  <AnchorPane prefHeight="720.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="54.0" layoutY="103.0" text="MAX VESTAPPEN" textFill="WHITE" />
+                        <Button fx:id="home_btn" layoutX="10.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Home" />
+                        <Button fx:id="order_btn" layoutX="10.0" layoutY="225.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Order" />
+                        <Button fx:id="search_btn" layoutX="10.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Search" />
+                        <Button fx:id="manage_btn" layoutX="10.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Manage" />
+                        <Button fx:id="report_btn" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Report" />
+                        <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Setting" />
+                        <Button layoutX="10.0" layoutY="595.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Help" />
+                        <Line endX="81.5" layoutX="109.0" layoutY="635.0" startX="-100.0" stroke="WHITE" />
+                        <Button layoutX="27.0" layoutY="651.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="147.0" styleClass="nav-btn" stylesheets="@dashboardDesign.css" text="Log out" />
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@dashboardDesign.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="700.0" prefWidth="1060.0" styleClass="pane" stylesheets="@dashboardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <children>
+                              <AnchorPane fx:id="home_pane" layoutY="-8.0" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-8.0">
+                                 <children>
+                                    <Text layoutX="519.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home pane" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="order_pane" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Text layoutX="507.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order pane" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Text layoutX="423.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search pane" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="manage_pane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" visible="false">
+                                 <children>
+                                    <Text layoutX="423.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="report_pane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" visible="false">
+                                 <children>
+                                    <Text layoutX="423.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report" />
+                                 </children>
+                              </AnchorPane>
+                           </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

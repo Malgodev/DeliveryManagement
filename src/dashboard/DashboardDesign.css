@@ -11,15 +11,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color:linear-gradient(to top, #A75D5D, #F0997D)
 }
 
-.nav-on-btn{
-    -fx-background-color: rgba(255, 255, 255, 0.2);
-    -fx-cursor:hand;
-    -fx-font-family:"Arial";
-    -fx-font-size: 14px;
-    -fx-text-fill: #fff;
-    -fx-alignment:CENTER_LEFT;
-}
-
 .nav-btn{
     -fx-background-color: transparent;
     -fx-cursor:hand;
@@ -46,5 +37,4 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .card{
     -fx-background-color: #FFC3A1;
     -fx-background-radius: 10px;
-
 }
