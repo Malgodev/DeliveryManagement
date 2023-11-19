@@ -52,3 +52,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-background-color: #fff; 
     -fx-background-radius: 10px;
 }
+
+.shadown{
+    /*-fx-effect: dropshadow (three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 1, 1);*/
+}
+
+.card-shadown{
+    -fx-background-color: #f1f1f1;
+}
