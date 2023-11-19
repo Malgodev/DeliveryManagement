@@ -3,13 +3,17 @@ package dashboard;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 public class DashboardController {
     
+
 
     @FXML
     private TextField address_rcv_tf;
@@ -24,10 +28,19 @@ public class DashboardController {
     private ComboBox<?> city_snd_tf;
 
     @FXML
+    private CheckBox cod_cb;
+
+    @FXML
+    private TextField cod_tf;
+
+    @FXML
+    private TextArea description_parcel_tf;
+
+    @FXML
     private TextField email_rcv_tf;
 
     @FXML
-    private TextField email_snd_id;
+    private TextField email_snd_tf;
 
     @FXML
     private TextField fname_rcv_tf;
@@ -42,6 +55,9 @@ public class DashboardController {
     private AnchorPane home_pane;
 
     @FXML
+    private AnchorPane invoice_text;
+
+    @FXML
     private TextField lname_rcv_tf;
 
     @FXML
@@ -54,6 +70,9 @@ public class DashboardController {
     private AnchorPane manage_pane;
 
     @FXML
+    private TextField name_parcel_tf;
+
+    @FXML
     private Button order_btn;
 
     @FXML
@@ -64,6 +83,9 @@ public class DashboardController {
 
     @FXML
     private TextField phone_snd_tf;
+
+    @FXML
+    private TextField qtt_parcel_tf;
 
     @FXML
     private Button report_btn;
@@ -91,6 +113,15 @@ public class DashboardController {
 
     @FXML
     private ComboBox<?> town_snd_tf;
+
+    @FXML
+    private ComboBox<String> transportType_comboBox;
+
+    @FXML
+    private Text transport_text;
+
+    @FXML
+    private TextField weight_parcel_tf;
     
     @FXML
     public void switchForm(MouseEvent event){
@@ -110,10 +141,23 @@ public class DashboardController {
         }
     }
     
+    private OrderController orderController = new OrderController();
+        
     @FXML
     private void submitForm(){
-        OrderController orderController = new OrderController();
-        String status = orderController.checkCusForm(fname_snd_tf, lname_snd_tf, phone_snd_tf, email_snd_id, address_snd_tf, state_snd_tf, city_snd_tf);
+        String status = orderController.checkCusForm(
+                fname_snd_tf, lname_snd_tf, phone_snd_tf, 
+                email_snd_tf, address_snd_tf, state_snd_tf, city_snd_tf);
+        System.out.println("sender: " + status);
+        
+        status = orderController.checkCusForm(fname_rcv_tf, lname_rcv_tf, phone_rcv_tf,
+                email_rcv_tf, address_rcv_tf, state_rcv_tf, city_rcv_tf);
+        System.out.println("rcv: " + status);        
+    }
+    
+    @FXML
+    private void parcelEvent(){
+        String status = orderController.checkParcelForm(name_parcel_tf, weight_parcel_tf, qtt_parcel_tf, description_parcel_tf, cod_tf, transportType_comboBox);
         System.out.println(status);
     }
 }
