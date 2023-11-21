@@ -4,16 +4,23 @@
  */
 package dashboard;
 
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+
+import main.Database;
+
 
 /**
  *
  * @author binhp
  */
 public class OrderController {
+    private final Database db = new Database();
+    
     public String checkCusForm(TextField fname, TextField lname, TextField phone, TextField email, TextField addr, ComboBox<?> state, ComboBox<?> city){
         String info = "";
         if (fname.getText().equals("")) return "no";
@@ -51,5 +58,22 @@ public class OrderController {
         else info += cod.getText() + ", ";
         
         return info;
+    }
+    
+    public void setDescTransition(Integer i, Text description){
+        String desc = "404 not found";
+        
+        if (i == 0) desc = "1 day";
+        else if (i == 1) desc = "2 days";
+        else if (i == 2) desc = "3 days";
+        else if (i == 3) desc = "4 days";
+        
+        description.setText(desc);
+    }
+    
+    public void refeshOrder(ComboBox<String> transType, Text description){
+        transType.getItems().addAll(db.getTransportType());
+        transType.getSelectionModel().select(0);
+        setDescTransition(0, description);
     }
 }
