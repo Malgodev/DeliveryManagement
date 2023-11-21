@@ -160,4 +160,10 @@ public class DashboardController {
         String status = orderController.checkParcelForm(name_parcel_tf, weight_parcel_tf, qtt_parcel_tf, description_parcel_tf, cod_tf, transportType_comboBox);
         System.out.println(status);
     }
+
+    public void refeshHome(ActionEvent actionEvent) {
+    }
+
+    public void createOrder(ActionEvent actionEvent) {
+    }
 }
