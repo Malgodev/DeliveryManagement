@@ -1,11 +1,16 @@
 package dashboard;
 
+import java.net.URL;
 import java.security.interfaces.DSAKey;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 import java.util.Vector;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -17,36 +22,21 @@ import javafx.scene.text.Text;
 
 import main.Database;
 
-public class DashboardController {
+public class DashboardController implements Initializable {
     
 
-
-    @FXML
-    private BarChart<?, ?> monthly_graph;
 
     @FXML
     private TextField address_rcv_tf;
 
     @FXML
-    private TextField address_rcv_tf1;
-
-    @FXML
     private TextField address_snd_tf;
-
-    @FXML
-    private TextField address_snd_tf1;
 
     @FXML
     private ComboBox<?> city_rcv_tf;
 
     @FXML
-    private ComboBox<?> city_rcv_tf1;
-
-    @FXML
     private ComboBox<?> city_snd_tf;
-
-    @FXML
-    private ComboBox<?> city_snd_tf1;
 
     @FXML
     private CheckBox cod_cb;
@@ -55,16 +45,13 @@ public class DashboardController {
     private TextField cod_tf;
 
     @FXML
+    private Button createParcel_btn;
+
+    @FXML
     private TextArea description_parcel_tf;
 
     @FXML
     private TextField email_rcv_tf;
-
-    @FXML
-    private TextField email_rcv_tf1;
-
-    @FXML
-    private TextField email_snd_id1;
 
     @FXML
     private TextField email_snd_tf;
@@ -73,13 +60,7 @@ public class DashboardController {
     private TextField fname_rcv_tf;
 
     @FXML
-    private TextField fname_rcv_tf1;
-
-    @FXML
     private TextField fname_snd_tf;
-
-    @FXML
-    private TextField fname_snd_tf1;
 
     @FXML
     private Button home_btn;
@@ -88,34 +69,19 @@ public class DashboardController {
     private AnchorPane home_pane;
 
     @FXML
-    private AnchorPane home_pane1;
-
-    @FXML
     private AnchorPane invoice_text;
 
     @FXML
     private TextField lname_rcv_tf;
 
     @FXML
-    private TextField lname_rcv_tf1;
-
-    @FXML
     private TextField lname_snd_tf;
 
     @FXML
-    private TextField lname_snd_tf1;
+    private Text monthly_avrWeight;
 
     @FXML
-    private Button manage_btn;
-
-    @FXML
-    private AnchorPane manage_pane;
-
-    @FXML
-    private AnchorPane manage_pane1;
-
-    @FXML
-    private Text monthly_avrDis;
+    private LineChart<String, Number> monthly_home_graph;
 
     @FXML
     private Text monthly_order;
@@ -133,19 +99,10 @@ public class DashboardController {
     private AnchorPane order_pane;
 
     @FXML
-    private AnchorPane order_pane1;
-
-    @FXML
     private TextField phone_rcv_tf;
 
     @FXML
-    private TextField phone_rcv_tf1;
-
-    @FXML
     private TextField phone_snd_tf;
-
-    @FXML
-    private TextField phone_snd_tf1;
 
     @FXML
     private TextField qtt_parcel_tf;
@@ -157,13 +114,7 @@ public class DashboardController {
     private AnchorPane report_pane;
 
     @FXML
-    private AnchorPane report_pane1;
-
-    @FXML
     private ComboBox<?> road_snd_tf;
-
-    @FXML
-    private ComboBox<?> road_snd_tf1;
 
     @FXML
     private Button search_btn;
@@ -172,34 +123,19 @@ public class DashboardController {
     private AnchorPane search_pane;
 
     @FXML
-    private AnchorPane search_pane1;
-
-    @FXML
     private ComboBox<?> state_rcv_tf;
-
-    @FXML
-    private ComboBox<?> state_rcv_tf1;
 
     @FXML
     private ComboBox<?> state_snd_tf;
 
     @FXML
-    private ComboBox<?> state_snd_tf1;
-
-    @FXML
     private ComboBox<?> town_rcv_id;
-
-    @FXML
-    private ComboBox<?> town_rcv_id1;
 
     @FXML
     private ComboBox<?> town_snd_tf;
 
     @FXML
-    private ComboBox<?> town_snd_tf1;
-
-    @FXML
-    private ComboBox<?> transportType_comboBox;
+    private ComboBox<String> transportType_comboBox;
 
     @FXML
     private Text transport_text;
@@ -207,14 +143,23 @@ public class DashboardController {
     @FXML
     private TextField weight_parcel_tf;
     
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
     private OrderController orderController = new OrderController();
     
+    private HomeController homeController = new HomeController();
+    
     private Database db = new Database();
+        
+    @FXML
+    public void changeTransDescription(){
+        orderController.setDescTransition(transportType_comboBox.getSelectionModel().getSelectedIndex(), transport_text);
+    }
     
     @FXML
     public void switchForm(MouseEvent event){
-        AnchorPane[] nav_pane = {home_pane, order_pane, search_pane, manage_pane, report_pane};
-        Button[] nav_btn = {home_btn, order_btn, search_btn, manage_btn, report_btn};
+        AnchorPane[] nav_pane = {home_pane, order_pane, search_pane, report_pane};
+        Button[] nav_btn = {home_btn, order_btn, search_btn, report_btn};
         for (int i = 0; i < nav_pane.length; i++){
             nav_pane[i].setVisible(false);
             nav_btn[i].setStyle("-fx-background-color: transparent;");
@@ -234,6 +179,7 @@ public class DashboardController {
     private ArrayList<String> submitForm(){
         ArrayList<String> return_info = new ArrayList<>();
         
+        
         String snd_status = orderController.checkCusForm(
                 fname_snd_tf, lname_snd_tf, phone_snd_tf, 
                 email_snd_tf, address_snd_tf, state_snd_tf, city_snd_tf);
@@ -252,14 +198,15 @@ public class DashboardController {
     
     @FXML
     private String parcelEvent(){
-        String status = orderController.checkParcelForm(name_parcel_tf, weight_parcel_tf, qtt_parcel_tf, description_parcel_tf, cod_tf, (ComboBox<String>) transportType_comboBox);
+        String status = orderController.checkParcelForm(name_parcel_tf, weight_parcel_tf, qtt_parcel_tf, 
+                description_parcel_tf, cod_tf, (ComboBox<String>) transportType_comboBox);
         
         return status;
     }
 
 
     @FXML
-    private void createOrder(){
+    private void createOrder(){ // missing parcel
         ArrayList<String> cus_info = submitForm();
         
         if (cus_info.size() == 2){
@@ -270,11 +217,14 @@ public class DashboardController {
         }
     }
     
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
+        refeshAll();
+    }
+    
     @FXML
-    private void refeshHome(){
-        monthly_order.setText(db.getMonthlyOrder().toString());
-        monthly_pay.setText(db.getMonthlyPayment().toString());
-//        monthly_avrDis
-//        monthly_graph
+    private void refeshAll(){
+        homeController.refeshHome(monthly_order, monthly_pay, monthly_avrWeight, monthly_home_graph);
+        orderController.refeshOrder(transportType_comboBox, transport_text);
     }    
 }
