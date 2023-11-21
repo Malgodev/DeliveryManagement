@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fee590f1-1278-4621-9544-f3b8b5b143b5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/tableView.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/tableView.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/dashboard/HomeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/dashboard/tableView.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/main/IOFile.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dashboard/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/IOFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/DashboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/Database.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dashboard/tableView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/tableView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Database.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +24,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="b10e3ea4088ba08b04cc0ddc0818ff1f888d1a78" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -28,8 +42,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/IDEA/javafx-sdk-21.0.1/lib",
+    "git-widget-placeholder": "Merging HieuDT",
+    "last_opened_file_path": "D:/Study/PTIT/Year 3/Database/DeliveryManagement/src",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -37,6 +51,8 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="DeliveryManagement" />
       <option name="VM_PARAMETERS" value="--module-path &quot;D:\IDEA\javafx-sdk-21.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml " />
@@ -55,5 +71,16 @@
       <updated>1700492695580</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
