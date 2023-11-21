@@ -23,6 +23,8 @@ public class HomeController {
         order.setText(db.getMonthlyOrder().toString());
         payment.setText(db.getMonthlyPayment().toString());
         weight.setText(db.getMonthlyAvgWeight().toString());
+        
+        chart.getData().clear();
         chart.getData().add(db.getMonthlyParcelPerDay());
     }
 }
