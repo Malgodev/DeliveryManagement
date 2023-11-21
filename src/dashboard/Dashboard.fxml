@@ -54,7 +54,7 @@
                      <children>
                         <AnchorPane prefHeight="700.0" prefWidth="1060.0" styleClass="pane" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                            <children>
-                              <AnchorPane fx:id="home_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="home_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Pane layoutX="10.0" layoutY="20.0" prefHeight="150.0" prefWidth="1040.0" stylesheets="@DashboardDesign.css">
                                        <children>

@@ -9,5 +9,19 @@ package main;
  * @author binhp
  */
 public class Database {
+    // Enter the query command here
+    private String file_addr = "C:\\Users\\binhp\\Documents\\test.txt";
     
+    public Integer getMonthlyOrder(){
+        return 20;
+    }
+    
+    public Integer getMonthlyPayment(){
+        return 19;
+    }    
+    
+    public void insertCustomer(String s){
+        System.out.println(s);
+        IOFile.Write(file_addr, s + "\n");
+    }
 }
