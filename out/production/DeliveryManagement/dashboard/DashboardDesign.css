@@ -60,3 +60,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 .card-shadown{
     -fx-background-color: #f1f1f1;
 }
+
+.scroll-pane{
+    -fx-background-radius: 20px;
+    -fx-background: transparent;
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-background-insets: 0;
+}

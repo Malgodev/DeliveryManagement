@@ -35,7 +35,17 @@ import main.Database;
 import model.Parcel;
 
 public class DashboardController implements Initializable {
-    
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initParcelTable();
+    }
+    @FXML
+    private void refeshAll(){
+        homeController.refeshHome(monthly_order, monthly_pay, monthly_avrWeight, monthly_home_graph);
+        orderController.refeshOrder(transportType_comboBox, transport_text);
+    }
 
 
     @FXML
@@ -259,6 +269,28 @@ public class DashboardController implements Initializable {
     private TableColumn<Parcel, String> p_status;
     @FXML
     private TableView<Parcel> tbParcel;
+    @FXML
+    private TextArea tvDes;
+    @FXML
+    private TextField tvTitle;
+    @FXML
+    private TextField tvWeight;
+    @FXML
+    private ComboBox<String> cbSearch;
+    @FXML
+    private ComboBox<String> cbStatus;
+    @FXML
+    private ComboBox<String> cbCodStatus;
+    @FXML
+    private TextField searchBar;
+    @FXML
+    void showParcelInfo(){
+        manage.displayInformation(tbParcel, tvTitle, tvWeight, tvDes);
+    }
+    @FXML
+    void searchTable() throws SQLException {
+        manage.searchParcel(cbSearch, searchBar, tbParcel);
+    }
 
     void initParcelTable(){
         p_id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, Integer>, ObservableValue<Integer>>() {
@@ -297,15 +329,10 @@ public class DashboardController implements Initializable {
         });
 
         manage.initTable(tbParcel);
+        manage.displayInformation(tbParcel, tvTitle, tvWeight, tvDes);
+        manage.initComboBox(cbSearch, cbStatus, cbCodStatus);
     }
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        initParcelTable();
-    }
-    private void refeshAll(){
-        homeController.refeshHome(monthly_order, monthly_pay, monthly_avrWeight, monthly_home_graph);
-        orderController.refeshOrder(transportType_comboBox, transport_text);
-    }
+
 }
