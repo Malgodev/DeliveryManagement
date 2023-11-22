@@ -6,19 +6,43 @@ package main;
 
 import java.util.ArrayList;
 import javafx.scene.chart.XYChart;
+import main.Connect;
+
+import java.sql.*;
 
 /**
  *
  * @author binhp
  */
-public class Database {
+public class Database{
     // Enter the query command here
 
     private String file_addr = "C:\\Users\\binhp\\Documents\\test.txt";
     
+    private Connection connection = Connect.getConnection();
+    private PreparedStatement statement;
+    private Statement state;
+    String query;
+    ResultSet res;
+    
+    public Database() throws SQLException{
+    }
     
     public Integer getMonthlyOrder(){
-        return 20;
+        try{
+            int parcel_num = 0;
+            query = "select count(*) as num_parcel from sending where extract(month from send_date) = 9";
+            statement = connection.prepareStatement(query);
+            res = statement.executeQuery();
+            while(res.next()){
+                parcel_num = res.getInt("num_parcel");
+            }
+            return parcel_num;
+            
+        }catch(SQLException e){
+            System.out.println("bruh");
+            return 0;
+        }
     }
     
     public Integer getMonthlyPayment(){
@@ -33,7 +57,11 @@ public class Database {
         XYChart.Series dataSeries = new XYChart.Series();
         dataSeries.setName("Parcels");
         
-        
+//        try{
+//            res = statement.executeQuery("");
+//        }catch(SQLException e){
+//            
+//        }
         
         dataSeries.getData().add(new XYChart.Data("1", 12));
         dataSeries.getData().add(new XYChart.Data("2", 38));

@@ -79,7 +79,7 @@
                                                             <Font name="Inter Black" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="monthly_order" fill="WHITE" layoutX="154.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te" textAlignment="RIGHT" wrappingWidth="132.6875">
+                                                      <Text fx:id="monthly_order" fill="WHITE" layoutX="46.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te" textAlignment="RIGHT" wrappingWidth="238.6875">
                                                          <font>
                                                             <Font name="Inter Regular" size="77.0" />
                                                          </font>
@@ -93,7 +93,7 @@
                                                             <Font name="Inter Black" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="monthly_pay" fill="WHITE" layoutX="127.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te" textAlignment="RIGHT" wrappingWidth="159.6875">
+                                                      <Text fx:id="monthly_pay" fill="WHITE" layoutX="39.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te" textAlignment="RIGHT" wrappingWidth="253.6875">
                                                          <font>
                                                             <Font size="77.0" />
                                                          </font>
@@ -110,7 +110,7 @@
                                                             <Font name="Inter Black" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="monthly_avrWeight" fill="WHITE" layoutX="197.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te">
+                                                      <Text fx:id="monthly_avrWeight" fill="WHITE" layoutX="28.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te" textAlignment="RIGHT" wrappingWidth="263.28125">
                                                          <font>
                                                             <Font name="Inter Regular" size="77.0" />
                                                          </font>
@@ -344,7 +344,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <VBox layoutX="16.0" layoutY="16.0" prefHeight="678.0" prefWidth="575.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="479.0" AnchorPane.topAnchor="16.0">
                                        <children>

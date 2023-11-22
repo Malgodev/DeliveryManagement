@@ -102,7 +102,7 @@ public class ManageController {
         if(searchType.equals("ID")){
             try {
                 query = "SELECT * FROM parcel WHERE PARCEL# = "  + searchBar.getText();
-                statement = connection.prepareStatement(query);
+//                statement = connection.prepareStatement(query);
                 res = statement.executeQuery();
                 updateTable(table, res);
 
