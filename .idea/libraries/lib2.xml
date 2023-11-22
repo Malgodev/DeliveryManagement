@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lib2">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../../IDEA/OracleDB/dbhomeXE/jdbc/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../../IDEA/OracleDB/dbhomeXE/jdbc/lib" recursive="false" />
+  </library>
+</component>

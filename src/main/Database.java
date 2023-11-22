@@ -4,14 +4,18 @@
  */
 package main;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 /**
  *
  * @author binhp
  */
 public class Database {
     // Enter the query command here
+
     private String file_addr = "C:\\Users\\binhp\\Documents\\test.txt";
-    
+
     public Integer getMonthlyOrder(){
         return 20;
     }

@@ -1,23 +1,25 @@
 package dashboard;
 
-import java.security.interfaces.DSAKey;
+import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Vector;
-import javafx.event.ActionEvent;
+import java.util.ResourceBundle;
+
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import javafx.util.Callback;
 import main.Database;
+import model.Parcel;
 
-public class DashboardController {
+public class DashboardController implements Initializable {
     
 
 
@@ -208,9 +210,12 @@ public class DashboardController {
     private TextField weight_parcel_tf;
     
     private OrderController orderController = new OrderController();
-    
+
     private Database db = new Database();
-    
+
+    public DashboardController() throws SQLException {
+    }
+
     @FXML
     public void switchForm(MouseEvent event){
         AnchorPane[] nav_pane = {home_pane, order_pane, search_pane, manage_pane, report_pane};
@@ -276,5 +281,67 @@ public class DashboardController {
         monthly_pay.setText(db.getMonthlyPayment().toString());
 //        monthly_avrDis
 //        monthly_graph
-    }    
+    }
+
+
+
+//--------------- ManageController ----------------
+//--------------- Cook, Leave me alone ----------------
+    private ManageController manage = new ManageController();
+
+    @FXML
+    private TableColumn<Parcel, Integer> p_cod;
+    @FXML
+    private TableColumn<Parcel, String> p_codStatus;
+    @FXML
+    private TableColumn<Parcel, Integer> p_id;
+    @FXML
+    private TableColumn<Parcel, String> p_status;
+    @FXML
+    private TableView<Parcel> tbParcel;
+
+    void initParcelTable(){
+        p_id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, Integer>, ObservableValue<Integer>>() {
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Parcel, Integer> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getId());
+                else
+                    return new ReadOnlyObjectWrapper<>(0);
+            }
+        });
+
+        p_cod.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, Integer>, ObservableValue<Integer>>() {
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Parcel, Integer> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getCOD());
+                else
+                    return new ReadOnlyObjectWrapper<>(0);
+            }
+        });
+
+        p_codStatus.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Parcel, String> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getCOD_status());
+                else
+                    return new ReadOnlyObjectWrapper<>("");
+            }
+        });
+        p_status.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Parcel, String> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getStatus());
+                else
+                    return new ReadOnlyObjectWrapper<>("");
+            }
+        });
+
+        manage.initTable(tbParcel);
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initParcelTable();
+    }
 }
