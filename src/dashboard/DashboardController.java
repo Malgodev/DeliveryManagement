@@ -169,8 +169,19 @@ public class DashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         refeshAll();
         initParcelTable();
+        initForm();
     }
-    
+
+    private void initForm() {
+        AnchorPane[] nav_pane = {home_pane, order_pane, search_pane, report_pane};
+        Button[] nav_btn = {home_btn, order_btn, search_btn, report_btn};
+        for (int i = 1; i < nav_pane.length; i++){
+            nav_pane[i].setVisible(false);
+            nav_btn[i].setStyle("-fx-background-color: transparent;");
+        }
+        nav_pane[0].setVisible(true);
+    }
+
     @FXML
     private void refeshAll(){
         homeController.refeshHome(monthly_order, monthly_pay, monthly_avrWeight, monthly_home_graph);
@@ -274,6 +285,10 @@ public class DashboardController implements Initializable {
     @FXML
     private TextField searchBar;
     @FXML
+    private TextField tvMin;
+    @FXML
+    private TextField tvMax;
+    @FXML
     void showParcelInfo(){
         manage.displayInformation(tbParcel, tvTitle, tvWeight, tvDes);
     }
@@ -293,7 +308,7 @@ public class DashboardController implements Initializable {
     }
     @FXML
     void filterParcel() throws SQLException {
-        manage.filterParcel(cbStatus, cbCodStatus, tbParcel);
+        manage.filterParcel(cbStatus, cbCodStatus, tvMin, tvMax, tbParcel);
     }
     void initParcelTable(){
         p_id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, Integer>, ObservableValue<Integer>>() {

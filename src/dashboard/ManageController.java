@@ -23,18 +23,18 @@ public class ManageController {
     ObservableList<String> searchs = FXCollections.observableArrayList( "ID", "Title");
     ObservableList<String> parcelStatus = FXCollections.observableArrayList(
             "Status",
-            "Wait for transiting",
+            "Waiting for transiting",
             "Transiting",
             "Delivering",
-            "Wait for re-delivering",
+            "Waiting for re-delivering",
             "Delivered",
             "Processing",
-            "Wait for returning",
+            "Waiting for returning",
             "Returning",
             "Returned",
             "404 not found");
 
-    ObservableList<String> codStatuss = FXCollections.observableArrayList("COD Status", "Yes", "No");
+    ObservableList<String> codStatuss = FXCollections.observableArrayList("COD Status", "No-COD", "Haven't paid", "Paid");
     public ManageController() throws SQLException {
     }
 
@@ -105,7 +105,9 @@ public class ManageController {
         search.setItems(searchs);
         search.setValue("ID");
         status.setItems(parcelStatus);
+        status.setValue("Status");
         codStatus.setItems(codStatuss);
+        codStatus.setValue("COD Status");
     }
 
 
@@ -155,26 +157,43 @@ public class ManageController {
         }
     }
 
-    int convertStatus(String status){
+    String convertStatus(String status){
         return switch (status){
-            case "Waiting for transiting" -> 0;
-            case "Transiting" -> 1;
-            case "Delivering" -> 2;
-            case "Waiting for re-delivering" -> 3;
-            case "Delivered" -> 4;
-            case "Processing" -> 5;
-            case "Waiting for returning" -> 6;
-            case "Returning" -> 7;
-            case "Returned" -> 8;
-            default -> -1;
+            case "Waiting for transiting" -> "WHERE status = 0";
+            case "Transiting" -> "WHERE status = 1";
+            case "Delivering" -> "WHERE status = 2";
+            case "Waiting for re-delivering" -> "WHERE status = 3";
+            case "Delivered" -> "WHERE status = 4";
+            case "Processing" -> "WHERE status = 5";
+            case "Waiting for returning" -> "WHERE status = 6";
+            case "Returning" -> "WHERE status = 7";
+            case "Returned" -> "WHERE status = 8";
+            default -> "WHERE status = status";
+        };
+
+    }
+
+    String convertCodStatus(String status){
+        return switch (status){
+            case "No-COD" -> "and COD_status is null";
+            case "Haven't paid" -> "and COD_status = 0";
+            case "Paid" -> "and COD_status = 1";
+            default -> "and COD_status = COD_status";
         };
     }
 
-    void filterParcel(ComboBox<String> status, ComboBox<String> codStatus, TableView<Parcel> table) throws SQLException {
-        Integer codStatusType = Objects.equals(codStatus.getSelectionModel().getSelectedItem(), "Yes") ? 1 : 0;
+    String convertWeight(Double min, Double max){
+        return "and weight between " + min + " and " + max;
+    }
+
+    void filterParcel(ComboBox<String> status, ComboBox<String> codStatus, TextField tvMin, TextField tvMax, TableView<Parcel> table) throws SQLException {
         String statusType = status.getSelectionModel().getSelectedItem();
+        String codStatusType = codStatus.getSelectionModel().getSelectedItem();
+        Double min = Double.parseDouble(tvMin.getText());
+        Double max = Double.parseDouble(tvMax.getText());
         try {
-            query = "SELECT * FROM parcel WHERE status = '" + convertStatus(statusType) + "' AND COD_status = '" + codStatusType + "'";
+            query = "SELECT * FROM parcel " + convertStatus(statusType) + " " + convertCodStatus(codStatusType) + " " + convertWeight(min, max);
+            System.out.println(query);
             statement = connection.prepareStatement(query);
             res = statement.executeQuery();
             updateTable(table, res);
