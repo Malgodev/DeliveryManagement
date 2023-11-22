@@ -68,3 +68,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-padding: 0;
     -fx-background-insets: 0;
 }
+
+.chart-legend-item text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+}

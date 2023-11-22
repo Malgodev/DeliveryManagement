@@ -13,9 +13,20 @@ import model.Tracking;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
+import java.util.TreeMap;
+
+import main.Database;
 
 public class ReportController {
+    private final Database db;
+
+    public ReportController() throws SQLException {
+        this.db = new Database();
+    }    
+    
     Connection connection = Connect.getConnection();
     PreparedStatement statement, state;
     String query;
@@ -56,9 +67,10 @@ public class ReportController {
 
     public void updatePieChart(PieChart wPieChart) {
         wPieChart.getData().clear();
-        wPieChart = new PieChart(pieChartData);
-        wPieChart.setTitle("Warehouse Report");
-
-
+        TreeMap<String, Integer> treeMap = db.getParcelType();
+        for (Map.Entry<String, Integer> entry:treeMap.entrySet()){
+            wPieChart.getData().add(new PieChart.Data(entry.getKey(), entry.getValue()));
+        }
     }
+        
 }

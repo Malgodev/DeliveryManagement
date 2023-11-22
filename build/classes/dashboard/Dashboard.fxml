@@ -142,7 +142,7 @@
                                     <ComboBox fx:id="home_month_cb" layoutX="856.0" layoutY="22.0" onAction="#getHomeMonth" prefHeight="25.0" prefWidth="165.0" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="order_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="order_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="320.0" prefWidth="620.0" styleClass="card" stylesheets="@DashboardDesign.css" AnchorPane.topAnchor="10.0">
                                        <children>
@@ -577,9 +577,9 @@
                                        <content>
                                           <AnchorPane prefHeight="1020.0" prefWidth="1010.0" styleClass="scroll-pane" stylesheets="@DashboardDesign.css">
                                              <children>
-                                                <Pane layoutX="14.0" layoutY="14.0" prefHeight="739.0" prefWidth="638.0" styleClass="card" stylesheets="@DashboardDesign.css">
+                                                <Pane layoutX="14.0" layoutY="14.0" prefHeight="739.0" prefWidth="638.0" style="-fx-background-color: D3756B;" styleClass="card" stylesheets="@DashboardDesign.css">
                                                    <children>
-                                                      <PieChart fx:id="w_pieChart" layoutX="69.0" layoutY="51.0" />
+                                                      <PieChart fx:id="w_pieChart" labelsVisible="false" layoutX="43.0" layoutY="27.0" legendSide="LEFT" prefHeight="325.0" prefWidth="551.0" styleClass="chart-legend-item" stylesheets="@DashboardDesign.css" title="Fee for each transportaion type" />
                                                    </children>
                                                 </Pane>
                                                 <VBox layoutX="680.0" layoutY="16.0" prefHeight="739.0" prefWidth="326.0" styleClass="card" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="265.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0">

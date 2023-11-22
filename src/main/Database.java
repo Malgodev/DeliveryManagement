@@ -17,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import javafx.scene.chart.PieChart;
 
 
 /**
@@ -125,10 +126,17 @@ public class Database{
     
     public ArrayList<String> getTransportType(){
         ArrayList<String> arr = new ArrayList<>();
-        arr.add("Standard");
-        arr.add("Saving");
-        arr.add("Express");
-        arr.add("Instant");
+        
+        try{
+            query = "select title from transport";
+            statement = connection.prepareStatement(query);
+            res = statement.executeQuery();        
+            while(res.next()){
+                arr.add(res.getString("title"));
+            }
+        } catch(SQLException e){
+        }
+        
         return arr;
     }
     
@@ -315,5 +323,25 @@ public class Database{
         }
 
         return df.format(amount);
+    }
+    
+    public TreeMap<String, Integer> getParcelType(){
+        TreeMap<String, Integer> treeMap = new TreeMap<>();
+        
+        try{
+            query = "select title, revenue " +
+                    "from transport natural join (select transport#, sum(payment)as revenue " +
+                    "from parcel natural join sending " +
+                    "group by transport#)";
+            statement = connection.prepareStatement(query);
+            res = statement.executeQuery();
+            while(res.next()){
+                treeMap.put(res.getString("title"), res.getInt("revenue"));
+            }            
+        }catch(SQLException e){
+            System.out.println("bruh");
+        }
+        
+        return treeMap;
     }
 }
