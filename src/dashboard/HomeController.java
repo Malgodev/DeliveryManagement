@@ -24,12 +24,13 @@ public class HomeController {
         this.db = new Database();
     }
     
-    public void refeshHome(Text order, Text payment, Text weight, LineChart<String, Number> chart){
-        order.setText(db.getMonthlyOrder().toString());
-        payment.setText(db.getMonthlyPayment().toString());
-        weight.setText(db.getMonthlyAvgWeight().toString());
+    public void refeshHome(Text order, Text payment, Text weight, LineChart<String, Number> chart, int month){
+        
+        order.setText(db.getMonthlyOrder(month).toString());
+        payment.setText(db.getMonthlyPayment(month));
+        weight.setText(db.getMonthlyAvgWeight(month).toString());
         
         chart.getData().clear();
-        chart.getData().add(db.getMonthlyParcelPerDay());
+        chart.getData().add(db.getMonthlyParcelPerDay(month));
     }
 }

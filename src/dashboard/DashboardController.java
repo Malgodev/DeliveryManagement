@@ -12,9 +12,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
 import java.security.interfaces.DSAKey;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Vector;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -153,11 +156,16 @@ public class DashboardController implements Initializable {
     @FXML
     private TextField weight_parcel_tf;
     
+    @FXML
+    private ComboBox<String> home_month_cb;    
+    
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     private OrderController orderController = new OrderController();
 
     private Database db = new Database();
+    
+    private Integer home_month;
 
     public DashboardController() throws SQLException {
     }
@@ -169,13 +177,14 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        addHomeComboBox();
         refeshAll();
         initParcelTable();
     }
     
     @FXML
     private void refeshAll(){
-        homeController.refeshHome(monthly_order, monthly_pay, monthly_avrWeight, monthly_home_graph);
+        homeController.refeshHome(monthly_order, monthly_pay, monthly_avrWeight, monthly_home_graph, home_month);
         orderController.refeshOrder(transportType_comboBox, transport_text);
     }    
     
@@ -244,9 +253,35 @@ public class DashboardController implements Initializable {
             System.out.println("cannot");
         }
     }
+    
+    @FXML
+    private void getHomeMonth(){
+        home_month = home_month_cb.getSelectionModel().getSelectedIndex();
+        refeshAll();
+    }
 
+    private void addHomeComboBox(){
+        ObservableList<String> month_name = FXCollections.observableArrayList(
+                "January", 
+                "February", 
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+        );
+        
+        home_month_cb.setItems(month_name);
+        home_month_cb.getSelectionModel().select(LocalDate.now().getMonthValue() - 1);
+        home_month = LocalDate.now().getMonthValue() - 1;
+    }
 
-
+    
 //--------------- ManageController ----------------
 //--------------- Cook, Leave me alone ----------------
     private ManageController manage = new ManageController();
