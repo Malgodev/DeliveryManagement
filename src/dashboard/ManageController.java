@@ -10,7 +10,7 @@ import main.Connect;
 import model.Parcel;
 
 import java.sql.*;
-import java.util.List;
+import java.util.Objects;
 
 public class ManageController {
     Connection connection = Connect.getConnection();
@@ -20,8 +20,19 @@ public class ManageController {
     ResultSet res;
 
     ObservableList<Parcel> parcelList = FXCollections.observableArrayList();
-    ObservableList<String> searchs = FXCollections.observableArrayList("All", "ID", "Title");
-    ObservableList<String> parcelStatus = FXCollections.observableArrayList("Status", "Delivering", "Delivered");
+    ObservableList<String> searchs = FXCollections.observableArrayList( "ID", "Title");
+    ObservableList<String> parcelStatus = FXCollections.observableArrayList(
+            "Status",
+            "Wait for transiting",
+            "Transiting",
+            "Delivering",
+            "Wait for re-delivering",
+            "Delivered",
+            "Processing",
+            "Wait for returning",
+            "Returning",
+            "Returned",
+            "404 not found");
 
     ObservableList<String> codStatuss = FXCollections.observableArrayList("COD Status", "Yes", "No");
     public ManageController() throws SQLException {
@@ -62,6 +73,8 @@ public class ManageController {
                         res.getInt("status"))
                 );
                 table.setItems(parcelList);
+                table.getSelectionModel().selectFirst();
+//                table.refresh();
             }
 
         } catch (SQLException ignored) {
@@ -120,6 +133,53 @@ public class ManageController {
 
             } catch (SQLException ignored) {
             }
+        }
+    }
+
+    void updateParcel(TextField title, TextField weight, TextArea note, TableView<Parcel> table) throws SQLException {
+        Parcel parcel = table.getSelectionModel().getSelectedItem();
+        int id = parcel.getId();
+        String pTitle = title.getText();
+        String pWeight = weight.getText();
+        String pNote = note.getText();
+        try {
+            query = "UPDATE parcel SET title = ?, weight = ?, note = ? WHERE PARCEL# = " + id;
+            statement = connection.prepareStatement(query);
+            statement.setString(1, pTitle);
+            statement.setString(2, pWeight);
+            statement.setString(3, pNote);
+            statement.executeUpdate();
+
+
+        } catch (SQLException ignored) {
+        }
+    }
+
+    int convertStatus(String status){
+        return switch (status){
+            case "Waiting for transiting" -> 0;
+            case "Transiting" -> 1;
+            case "Delivering" -> 2;
+            case "Waiting for re-delivering" -> 3;
+            case "Delivered" -> 4;
+            case "Processing" -> 5;
+            case "Waiting for returning" -> 6;
+            case "Returning" -> 7;
+            case "Returned" -> 8;
+            default -> -1;
+        };
+    }
+
+    void filterParcel(ComboBox<String> status, ComboBox<String> codStatus, TableView<Parcel> table) throws SQLException {
+        Integer codStatusType = Objects.equals(codStatus.getSelectionModel().getSelectedItem(), "Yes") ? 1 : 0;
+        String statusType = status.getSelectionModel().getSelectedItem();
+        try {
+            query = "SELECT * FROM parcel WHERE status = '" + convertStatus(statusType) + "' AND COD_status = '" + codStatusType + "'";
+            statement = connection.prepareStatement(query);
+            res = statement.executeQuery();
+            updateTable(table, res);
+
+        } catch (SQLException ignored) {
         }
     }
 }

@@ -6,19 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="fee590f1-1278-4621-9544-f3b8b5b143b5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/DeliveryManagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/DeliveryManagement.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/Dashboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardDesign.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/HomeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/ManageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/ManageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/main/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/main/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/model/Parcel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/model/Parcel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/DashboardController.java" afterDir="false" />
@@ -58,7 +52,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "HieuDT",
     "last_opened_file_path": "D:/Study/PTIT/Year 3/OOP/CreditManagement",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"

@@ -164,9 +164,7 @@ public class DashboardController implements Initializable {
 
     @FXML
     private TextField weight_parcel_tf;
-    
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     private OrderController orderController = new OrderController();
 
     private Database db = new Database();
@@ -291,7 +289,20 @@ public class DashboardController implements Initializable {
     void searchTable() throws SQLException {
         manage.searchParcel(cbSearch, searchBar, tbParcel);
     }
-
+    @FXML
+    void updateParcel() throws SQLException {
+        manage.updateParcel(tvTitle, tvWeight, tvDes, tbParcel);
+        Parcel parcel = tbParcel.getSelectionModel().getSelectedItem();
+        parcel.setTitle(tvTitle.getText());
+        parcel.setNote(tvDes.getText());
+        parcel.setWeight(Double.parseDouble(tvWeight.getText()));
+        tbParcel.refresh();
+        System.out.println("Updated");
+    }
+    @FXML
+    void filterParcel() throws SQLException {
+        manage.filterParcel(cbStatus, cbCodStatus, tbParcel);
+    }
     void initParcelTable(){
         p_id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, Integer>, ObservableValue<Integer>>() {
             public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Parcel, Integer> p) {
