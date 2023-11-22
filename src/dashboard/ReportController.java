@@ -27,17 +27,21 @@ public class ReportController {
     void updateTable(TableView<Pair<Integer, Integer>> table, TextField tvMonth){
         warehouseList.clear();
         try{
-            query = "select wh#,(wh_parcel+cus_parcel) as total_parcel\n" +
-                    "from (select dst_wh#, count(parcel#) as wh_parcel\n" +
-                    "from packing natural join(select wh#, pack_date, cargo#, dst_wh# from transition where extract(month from pack_date) = 10)\n" +
-                    "group by dst_wh#),\n" +
-                    "(select wh#, count(*) as cus_parcel\n" +
-                    "from sending natural join parcel natural join packing\n" +
-                    "where extract(month from pack_date) = ?\n" +
-                    "group by wh#)\n" +
-                    "where dst_wh# = wh#";
+            query = "select dst_wh#, (coalesce(wh_parcel+cus_parcel, wh_parcel, cus_parcel)) as total_parcel\n" +
+                    "from \n" +
+                    "(select dst_wh#, count(parcel#) as wh_parcel\n" +
+                    "from \n" +
+                    "packing natural join (select wh#, pack_date, cargo#, dst_wh# \n" +
+                    "                                from transition \n" +
+                    "                                where extract(month from pack_date) = ?)\n" +
+                    "    group by dst_wh#) \n" +
+                    "full outer join (select wh#, count(*) as cus_parcel\n" +
+                    "                from sending natural join parcel natural join packing\n" +
+                    "                    where extract(month from pack_date) = ?\n" +
+                    "group by wh#) on dst_wh# = wh#";
             statement = connection.prepareStatement(query);
             statement.setString(1, tvMonth.getText());
+            statement.setString(2, tvMonth.getText());
             statement.executeUpdate();
             res = statement.executeQuery();
             while (res.next()){
@@ -45,7 +49,6 @@ public class ReportController {
                 pieChartData.add(new PieChart.Data(String.valueOf(res.getInt(1)), res.getInt(2)));
             }
             table.setItems(warehouseList);
-//            table;
         }catch (Exception e){
             e.printStackTrace();
         }

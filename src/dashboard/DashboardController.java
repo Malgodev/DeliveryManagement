@@ -450,6 +450,8 @@ public class DashboardController implements Initializable {
                 }
               });
 
+              tvMonth.setText(String.valueOf(LocalDate.now().getMonthValue()));
+
               report.updateTable(tbWH, tvMonth);
               report.updatePieChart(w_pieChart);
     }
