@@ -8,9 +8,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import main.Connect;
 import model.Parcel;
+import model.Tracking;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.logging.SimpleFormatter;
 
 public class ManageController {
     Connection connection = Connect.getConnection();
@@ -20,6 +25,7 @@ public class ManageController {
     ResultSet res;
 
     ObservableList<Parcel> parcelList = FXCollections.observableArrayList();
+    ObservableList<Tracking> trackList = FXCollections.observableArrayList();
     ObservableList<String> searchs = FXCollections.observableArrayList( "ID", "Title");
     ObservableList<String> parcelStatus = FXCollections.observableArrayList(
             "Status",
@@ -201,5 +207,61 @@ public class ManageController {
         } catch (SQLException ignored) {
         }
     }
+
+    void trackParcel(TableView<Tracking> tableT, TableView<Parcel> tableP){
+        trackList.clear();
+        Parcel parcel = tableP.getSelectionModel().getSelectedItem();
+        try {
+            query = "select send_date, address from sending natural join parcel natural join packing, warehouse where packing.wh# = warehouse.wh# and parcel# = ?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, parcel.getId());
+            statement.executeUpdate();
+            res = statement.executeQuery();
+            while (res.next()) {
+                trackList.add(new Tracking(res.getDate("send_date"),
+                        res.getString("address"))
+                );
+            }
+            //2
+            query = "select pack_date, wh#, cargo# from packing where parcel# = " + 0;
+            statement = connection.prepareStatement(query);
+            res = statement.executeQuery();
+
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy");
+            while (res.next()) {
+                query = "select transit_date, address from transition, warehouse where transition.wh# = " + res.getInt("wh#") +
+                        " and transition.pack_date = to_date('" + formatter.format(res.getDate("pack_date")) +"','dd-mm-yy') and transition.cargo# = " + res.getInt("cargo#") +
+                        " and transition.dst_wh# = warehouse.wh#";
+
+                PreparedStatement prStatement = connection.prepareStatement(query);
+                ResultSet result = prStatement.executeQuery();
+                while (result.next()) {
+                   trackList.add(new Tracking(result.getDate("transit_date"),
+                           result.getString("address"))
+                   );
+                }
+            }
+//            //3
+            query = "select delivery_date, address\n" +
+                    "from delivery join parcel using (parcel#) natural join sending, customer\n" +
+                    "where recipient# = customer# and parcel# = ?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, parcel.getId());
+            statement.executeUpdate();
+            res = statement.executeQuery();
+            while (res.next()) {
+                trackList.add(new Tracking(res.getDate("delivery_date"),
+                        res.getString("address"))
+                );
+            }
+
+            tableT.setItems(trackList);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }
 

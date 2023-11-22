@@ -9,7 +9,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.BarChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import java.security.interfaces.DSAKey;
 import java.time.LocalDate;
@@ -23,8 +23,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -35,8 +33,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 import javafx.util.Callback;
+import javafx.util.Pair;
 import main.Database;
 import model.Parcel;
+import model.Tracking;
 
 public class DashboardController implements Initializable {
 
@@ -167,6 +167,7 @@ public class DashboardController implements Initializable {
         refeshAll();
         initParcelTable();
         initForm();
+        initReportTable();
     }
 
     private void initForm() {
@@ -307,12 +308,20 @@ public class DashboardController implements Initializable {
     @FXML
     private TextField tvMax;
     @FXML
+    private TableView<Tracking> tbTracking;
+    @FXML
+    private TableColumn<Tracking, String> p_date;
+    @FXML
+    private TableColumn<Tracking, String> p_add;
+    @FXML
     void showParcelInfo(){
         manage.displayInformation(tbParcel, tvTitle, tvWeight, tvDes);
+        manage.trackParcel(tbTracking, tbParcel);
     }
     @FXML
     void searchTable() throws SQLException {
         manage.searchParcel(cbSearch, searchBar, tbParcel);
+        showParcelInfo();
     }
     @FXML
     void updateParcel() throws SQLException {
@@ -327,6 +336,7 @@ public class DashboardController implements Initializable {
     @FXML
     void filterParcel() throws SQLException {
         manage.filterParcel(cbStatus, cbCodStatus, tvMin, tvMax, tbParcel);
+        showParcelInfo();
     }
     void initParcelTable(){
         p_id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, Integer>, ObservableValue<Integer>>() {
@@ -364,8 +374,68 @@ public class DashboardController implements Initializable {
             }
         });
 
+        p_date.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Tracking, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Tracking, String> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Tracking) p.getValue()).getDate()).asString();
+                else
+                    return new ReadOnlyObjectWrapper<>("");
+            }
+        });
+
+        p_add.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Tracking, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Tracking, String> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Tracking) p.getValue()).getAddress());
+                else
+                    return new ReadOnlyObjectWrapper<>("");
+            }
+        });
+
         manage.initTable(tbParcel);
         manage.displayInformation(tbParcel, tvTitle, tvWeight, tvDes);
         manage.initComboBox(cbSearch, cbStatus, cbCodStatus);
+    }
+
+    //--------------- ReportController ----------------
+    //--------------- Cook, Leave me alone ----------------
+    private ReportController report = new ReportController();
+    @FXML
+    private TableView<Pair<Integer, Integer>> tbWH;
+    @FXML
+    private TableColumn<Pair<Integer, Integer>, Integer> w_id;
+    @FXML
+    private TableColumn<Pair<Integer, Integer>, Integer> w_total;
+    @FXML
+    private TextField tvMonth;
+    @FXML
+    void updateWH() throws SQLException {
+        report.updateTable(tbWH, tvMonth);
+    }
+    @FXML
+    private PieChart w_pieChart;
+    void initReportTable(){
+           w_id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Pair<Integer, Integer>, Integer>, ObservableValue<Integer>>() {
+               public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Pair<Integer, Integer>, Integer> p) {
+                   if (p.getValue() != null)
+                       return new ReadOnlyObjectWrapper<>(((Pair<Integer, Integer>) p.getValue()).getKey());
+                   else
+                       return new ReadOnlyObjectWrapper<>(0);
+               }
+           });
+
+              w_total.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Pair<Integer, Integer>, Integer>, ObservableValue<Integer>>() {
+                public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Pair<Integer, Integer>, Integer> p) {
+                     if (p.getValue() != null)
+                          return new ReadOnlyObjectWrapper<>(((Pair<Integer, Integer>) p.getValue()).getValue());
+                     else
+                          return new ReadOnlyObjectWrapper<>(0);
+                }
+              });
+
+              tvMonth.setText(String.valueOf(LocalDate.now().getMonthValue()));
+
+              report.updateTable(tbWH, tvMonth);
+              report.updatePieChart(w_pieChart);
     }
 }
