@@ -384,7 +384,7 @@
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin></ComboBox>
-                                                      <TextField fx:id="searchBar" onAction="#searchTable" onInputMethodTextChanged="#searchTable" HBox.hgrow="ALWAYS">
+                                                      <TextField fx:id="searchBar" onAction="#searchTable" onInputMethodTextChanged="#searchTable" onKeyTyped="#searchTable" HBox.hgrow="ALWAYS">
                                                          <HBox.margin>
                                                             <Insets left="8.0" right="10.0" />
                                                          </HBox.margin></TextField>
@@ -436,7 +436,7 @@
                                                             <Insets left="4.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <TextField fx:id="tvMax" onAction="#filterParcel" onKeyTyped="#filterParcel" prefHeight="25.0" prefWidth="50.0" text="999999">
+                                                      <TextField fx:id="tvMax" onAction="#filterParcel" onInputMethodTextChanged="#filterParcel" onKeyTyped="#filterParcel" prefHeight="25.0" prefWidth="50.0" text="999999">
                                                          <HBox.margin>
                                                             <Insets left="4.0" />
                                                          </HBox.margin>
