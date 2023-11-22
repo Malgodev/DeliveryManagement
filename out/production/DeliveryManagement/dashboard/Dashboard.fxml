@@ -45,12 +45,6 @@
                         <Button fx:id="report_btn" layoutX="10.0" layoutY="315.0" mnemonicParsing="false" onAction="#refeshAll" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Report" />
                         <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" onAction="#refeshAll" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Setting" />
                         <Button layoutX="10.0" layoutY="595.0" mnemonicParsing="false" onAction="#refeshAll" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Help" />
-                        <Button fx:id="home_btn" layoutX="10.0" layoutY="180.0" mnemonicParsing="false" onAction="#refeshHome" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn-clicked" stylesheets="@DashboardDesign.css" text="Home" />
-                        <Button fx:id="order_btn" layoutX="10.0" layoutY="225.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Order" />
-                        <Button fx:id="search_btn" layoutX="10.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Search" />
-                        <Button fx:id="report_btn" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Report" />
-                        <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Setting" />
-                        <Button layoutX="10.0" layoutY="595.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Help" />
                         <Line endX="81.5" layoutX="109.0" layoutY="635.0" startX="-100.0" stroke="WHITE" />
                         <Button layoutX="27.0" layoutY="651.0" mnemonicParsing="false" onAction="#refeshAll" prefHeight="40.0" prefWidth="147.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Log out" />
                      </children>
@@ -85,7 +79,7 @@
                                                             <Font name="Inter Black" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="monthly_order" fill="WHITE" layoutX="154.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te" textAlignment="RIGHT" wrappingWidth="132.6875">
+                                                      <Text fx:id="monthly_order" fill="WHITE" layoutX="46.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te" textAlignment="RIGHT" wrappingWidth="238.6875">
                                                          <font>
                                                             <Font name="Inter Regular" size="77.0" />
                                                          </font>
@@ -99,7 +93,7 @@
                                                             <Font name="Inter Black" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="monthly_pay" fill="WHITE" layoutX="127.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te" textAlignment="RIGHT" wrappingWidth="159.6875">
+                                                      <Text fx:id="monthly_pay" fill="WHITE" layoutX="39.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te" textAlignment="RIGHT" wrappingWidth="253.6875">
                                                          <font>
                                                             <Font size="77.0" />
                                                          </font>
@@ -116,7 +110,7 @@
                                                             <Font name="Inter Black" size="18.0" />
                                                          </font>
                                                       </Text>
-                                                      <Text fx:id="monthly_avrWeight" fill="WHITE" layoutX="197.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te">
+                                                      <Text fx:id="monthly_avrWeight" fill="WHITE" layoutX="28.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Te" textAlignment="RIGHT" wrappingWidth="263.28125">
                                                          <font>
                                                             <Font name="Inter Regular" size="77.0" />
                                                          </font>
@@ -133,9 +127,9 @@
                                           </GridPane>
                                        </children>
                                     </Pane>
-                                    <Pane layoutX="28.0" layoutY="253.0" prefHeight="564.0" prefWidth="1036.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+                                    <Pane layoutX="10.0" layoutY="189.0" prefHeight="542.0" prefWidth="1036.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="10.0">
                                        <children>
-                                          <LineChart fx:id="monthly_home_graph" layoutX="14.0" layoutY="4.0" prefHeight="546.0" prefWidth="1035.0" title="Number of Parcels per Day">
+                                          <LineChart fx:id="monthly_home_graph" layoutX="6.0" layoutY="33.0" prefHeight="499.0" prefWidth="1024.0" title="Number of Parcels per Day">
                                             <xAxis>
                                               <CategoryAxis label="Day" side="BOTTOM" />
                                             </xAxis>
@@ -390,7 +384,7 @@
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin></ComboBox>
-                                                      <TextField fx:id="searchBar" onAction="#searchTable" onInputMethodTextChanged="#searchTable" HBox.hgrow="ALWAYS">
+                                                      <TextField fx:id="searchBar" onAction="#searchTable" onInputMethodTextChanged="#searchTable" onKeyTyped="#searchTable" HBox.hgrow="ALWAYS">
                                                          <HBox.margin>
                                                             <Insets left="8.0" right="10.0" />
                                                          </HBox.margin></TextField>
@@ -414,22 +408,22 @@
                                                 </Label>
                                                 <HBox>
                                                    <children>
-                                                      <ComboBox fx:id="cbStatus" prefHeight="26.0" prefWidth="75.0" promptText="Status">
+                                                      <ComboBox fx:id="cbStatus" onAction="#filterParcel" prefHeight="26.0" prefWidth="75.0" promptText="Status">
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin>
                                                       </ComboBox>
-                                                      <ComboBox fx:id="cbCodStatus" prefHeight="26.0" prefWidth="102.0" promptText="COD status">
+                                                      <ComboBox fx:id="cbCodStatus" onAction="#filterParcel" prefHeight="26.0" prefWidth="102.0" promptText="COD status">
                                                          <HBox.margin>
                                                             <Insets left="16.0" />
                                                          </HBox.margin>
                                                       </ComboBox>
-                                                      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Weight:">
+                                                      <Button fx:id="cbWeight" mnemonicParsing="false" onAction="#filterParcel" prefHeight="25.0" prefWidth="61.0" text="Weight:">
                                                          <HBox.margin>
                                                             <Insets left="16.0" />
                                                          </HBox.margin>
                                                       </Button>
-                                                      <TextField layoutX="219.0" layoutY="10.0" prefHeight="25.0" prefWidth="30.0">
+                                                      <TextField fx:id="tvMin" layoutX="219.0" layoutY="10.0" onAction="#filterParcel" onInputMethodTextChanged="#filterParcel" onKeyTyped="#filterParcel" prefHeight="25.0" prefWidth="50.0" text="0">
                                                          <HBox.margin>
                                                             <Insets left="4.0" />
                                                          </HBox.margin>
@@ -442,7 +436,7 @@
                                                             <Insets left="4.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <TextField prefHeight="25.0" prefWidth="30.0">
+                                                      <TextField fx:id="tvMax" onAction="#filterParcel" onInputMethodTextChanged="#filterParcel" onKeyTyped="#filterParcel" prefHeight="25.0" prefWidth="50.0" text="999999">
                                                          <HBox.margin>
                                                             <Insets left="4.0" />
                                                          </HBox.margin>
@@ -515,7 +509,7 @@
                                                                   <Insets left="10.0" right="10.0" top="8.0" />
                                                                </VBox.margin>
                                                             </TextArea>
-                                                            <Button mnemonicParsing="false" text="Update">
+                                                            <Button mnemonicParsing="false" onAction="#updateParcel" text="Update">
                                                                <VBox.margin>
                                                                   <Insets left="10.0" top="8.0" />
                                                                </VBox.margin>
@@ -634,163 +628,6 @@
                   </AnchorPane>
                </center>
             </BorderPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="nav-form" stylesheets="@DashboardDesign.css" visible="false">
-         <children>
-            <AnchorPane prefHeight="700.0" prefWidth="1060.0" styleClass="pane" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-               <children>
-                  <AnchorPane fx:id="home_pane1" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Text layoutX="519.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home pane" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="order_pane1" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="320.0" prefWidth="620.0" styleClass="card" stylesheets="@DashboardDesign.css" AnchorPane.topAnchor="10.0">
-                           <children>
-                              <AnchorPane layoutY="37.0" prefHeight="272.0" prefWidth="600.0" styleClass="order-form" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                                 <children>
-                                    <Text layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="89.13671875">
-                                       <font>
-                                          <Font name="Inter Regular" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="fname_snd_tf1" layoutX="20.0" layoutY="30.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField fx:id="lname_snd_tf1" layoutX="310.0" layoutY="30.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Text layoutX="20.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" wrappingWidth="153.13671875">
-                                       <font>
-                                          <Font name="Inter Regular" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="phone_snd_tf1" layoutX="20.0" layoutY="94.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField fx:id="email_snd_id1" layoutX="310.0" layoutY="94.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Text layoutX="310.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" text="Email:" wrappingWidth="89.13671875">
-                                       <font>
-                                          <Font name="Inter Regular" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <Text layoutX="20.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" wrappingWidth="153.13671875">
-                                       <font>
-                                          <Font name="Inter Regular" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="address_snd_tf1" layoutX="20.0" layoutY="154.0" onAction="#submitForm" prefHeight="30.0" prefWidth="560.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <ComboBox fx:id="state_snd_tf1" layoutX="22.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                    <ComboBox fx:id="city_snd_tf1" layoutX="310.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
-                                    <ComboBox fx:id="town_snd_tf1" layoutX="21.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                    <ComboBox fx:id="road_snd_tf1" layoutX="309.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
-                                 </children>
-                              </AnchorPane>
-                              <Text fill="WHITE" layoutX="40.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SENDER">
-                                 <font>
-                                    <Font name="Inter Black" size="20.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="14.0" layoutY="355.0" prefHeight="320.0" prefWidth="620.0" styleClass="card" stylesheets="@DashboardDesign.css">
-                           <children>
-                              <AnchorPane layoutY="37.0" prefHeight="272.0" prefWidth="600.0" styleClass="order-form" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                                 <children>
-                                    <Text layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="89.13671875">
-                                       <font>
-                                          <Font name="Inter Regular" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="fname_rcv_tf1" layoutX="20.0" layoutY="30.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField fx:id="lname_rcv_tf1" layoutX="310.0" layoutY="30.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Text layoutX="20.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" wrappingWidth="153.13671875">
-                                       <font>
-                                          <Font name="Inter Regular" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="phone_rcv_tf1" layoutX="20.0" layoutY="94.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField fx:id="email_rcv_tf1" layoutX="310.0" layoutY="94.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <Text layoutX="310.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="font" text="Email:" wrappingWidth="89.13671875">
-                                       <font>
-                                          <Font name="Inter Regular" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <Text layoutX="20.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" wrappingWidth="153.13671875">
-                                       <font>
-                                          <Font name="Inter Regular" size="14.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="address_rcv_tf1" layoutX="20.0" layoutY="154.0" onAction="#submitForm" prefHeight="30.0" prefWidth="560.0">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </TextField>
-                                    <ComboBox fx:id="state_rcv_tf1" layoutX="22.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                    <ComboBox fx:id="city_rcv_tf1" layoutX="310.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
-                                    <ComboBox fx:id="town_rcv_id1" layoutX="21.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                    <ComboBox layoutX="309.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
-                                 </children>
-                              </AnchorPane>
-                              <Text fill="WHITE" layoutX="40.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RECEIVER">
-                                 <font>
-                                    <Font name="Inter Black" size="20.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </AnchorPane>
-                        <Button layoutX="734.0" layoutY="126.0" mnemonicParsing="false" onAction="#submitForm" text="Button" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="search_pane1" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Text layoutX="423.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search pane" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="manage_pane1" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" visible="false">
-                     <children>
-                        <Text layoutX="423.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="report_pane1" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" visible="false">
-                     <children>
-                        <Text layoutX="423.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Report" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

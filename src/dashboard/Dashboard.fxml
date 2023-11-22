@@ -55,7 +55,7 @@
                      <children>
                         <AnchorPane prefHeight="700.0" prefWidth="1060.0" styleClass="pane" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                            <children>
-                              <AnchorPane fx:id="home_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="home_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Pane layoutX="10.0" layoutY="60.0" prefHeight="150.0" prefWidth="1040.0" stylesheets="@DashboardDesign.css">
                                        <children>
@@ -345,7 +345,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <VBox layoutX="16.0" layoutY="16.0" prefHeight="678.0" prefWidth="575.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="479.0" AnchorPane.topAnchor="16.0">
                                        <children>
@@ -385,7 +385,7 @@
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin></ComboBox>
-                                                      <TextField fx:id="searchBar" onAction="#searchTable" onInputMethodTextChanged="#searchTable" HBox.hgrow="ALWAYS">
+                                                      <TextField fx:id="searchBar" onAction="#searchTable" onInputMethodTextChanged="#searchTable" onKeyTyped="#searchTable" HBox.hgrow="ALWAYS">
                                                          <HBox.margin>
                                                             <Insets left="8.0" right="10.0" />
                                                          </HBox.margin></TextField>
@@ -409,22 +409,22 @@
                                                 </Label>
                                                 <HBox>
                                                    <children>
-                                                      <ComboBox fx:id="cbStatus" prefHeight="26.0" prefWidth="75.0" promptText="Status">
+                                                      <ComboBox fx:id="cbStatus" onAction="#filterParcel" prefHeight="26.0" prefWidth="75.0" promptText="Status">
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin>
                                                       </ComboBox>
-                                                      <ComboBox fx:id="cbCodStatus" prefHeight="26.0" prefWidth="102.0" promptText="COD status">
+                                                      <ComboBox fx:id="cbCodStatus" onAction="#filterParcel" prefHeight="26.0" prefWidth="102.0" promptText="COD status">
                                                          <HBox.margin>
                                                             <Insets left="16.0" />
                                                          </HBox.margin>
                                                       </ComboBox>
-                                                      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Weight:">
+                                                      <Button fx:id="cbWeight" mnemonicParsing="false" onAction="#filterParcel" prefHeight="25.0" prefWidth="61.0" text="Weight:">
                                                          <HBox.margin>
                                                             <Insets left="16.0" />
                                                          </HBox.margin>
                                                       </Button>
-                                                      <TextField layoutX="219.0" layoutY="10.0" prefHeight="25.0" prefWidth="30.0">
+                                                      <TextField fx:id="tvMin" layoutX="219.0" layoutY="10.0" onAction="#filterParcel" onInputMethodTextChanged="#filterParcel" onKeyTyped="#filterParcel" prefHeight="25.0" prefWidth="50.0" text="0">
                                                          <HBox.margin>
                                                             <Insets left="4.0" />
                                                          </HBox.margin>
@@ -437,7 +437,7 @@
                                                             <Insets left="4.0" />
                                                          </HBox.margin>
                                                       </Label>
-                                                      <TextField prefHeight="25.0" prefWidth="30.0">
+                                                      <TextField fx:id="tvMax" onAction="#filterParcel" onInputMethodTextChanged="#filterParcel" onKeyTyped="#filterParcel" prefHeight="25.0" prefWidth="50.0" text="999999">
                                                          <HBox.margin>
                                                             <Insets left="4.0" />
                                                          </HBox.margin>
@@ -510,7 +510,7 @@
                                                                   <Insets left="10.0" right="10.0" top="8.0" />
                                                                </VBox.margin>
                                                             </TextArea>
-                                                            <Button mnemonicParsing="false" text="Update">
+                                                            <Button mnemonicParsing="false" onAction="#updateParcel" text="Update">
                                                                <VBox.margin>
                                                                   <Insets left="10.0" top="8.0" />
                                                                </VBox.margin>

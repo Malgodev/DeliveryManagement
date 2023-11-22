@@ -158,9 +158,7 @@ public class DashboardController implements Initializable {
     
     @FXML
     private ComboBox<String> home_month_cb;    
-    
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+  
     private OrderController orderController = new OrderController();
 
     private Database db = new Database();
@@ -180,8 +178,19 @@ public class DashboardController implements Initializable {
         addHomeComboBox();
         refeshAll();
         initParcelTable();
+        initForm();
     }
-    
+
+    private void initForm() {
+        AnchorPane[] nav_pane = {home_pane, order_pane, search_pane, report_pane};
+        Button[] nav_btn = {home_btn, order_btn, search_btn, report_btn};
+        for (int i = 1; i < nav_pane.length; i++){
+            nav_pane[i].setVisible(false);
+            nav_btn[i].setStyle("-fx-background-color: transparent;");
+        }
+        nav_pane[0].setVisible(true);
+    }
+
     @FXML
     private void refeshAll(){
         homeController.refeshHome(monthly_order, monthly_pay, monthly_avrWeight, monthly_home_graph, home_month);
@@ -311,6 +320,10 @@ public class DashboardController implements Initializable {
     @FXML
     private TextField searchBar;
     @FXML
+    private TextField tvMin;
+    @FXML
+    private TextField tvMax;
+    @FXML
     void showParcelInfo(){
         manage.displayInformation(tbParcel, tvTitle, tvWeight, tvDes);
     }
@@ -318,7 +331,20 @@ public class DashboardController implements Initializable {
     void searchTable() throws SQLException {
         manage.searchParcel(cbSearch, searchBar, tbParcel);
     }
-
+    @FXML
+    void updateParcel() throws SQLException {
+        manage.updateParcel(tvTitle, tvWeight, tvDes, tbParcel);
+        Parcel parcel = tbParcel.getSelectionModel().getSelectedItem();
+        parcel.setTitle(tvTitle.getText());
+        parcel.setNote(tvDes.getText());
+        parcel.setWeight(Double.parseDouble(tvWeight.getText()));
+        tbParcel.refresh();
+        System.out.println("Updated");
+    }
+    @FXML
+    void filterParcel() throws SQLException {
+        manage.filterParcel(cbStatus, cbCodStatus, tvMin, tvMax, tbParcel);
+    }
     void initParcelTable(){
         p_id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, Integer>, ObservableValue<Integer>>() {
             public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Parcel, Integer> p) {

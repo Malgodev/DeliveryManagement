@@ -62,4 +62,16 @@ public class Parcel {
             default -> "404 not found";
         };
     }
+
+    public void setTitle(String text) {
+        this.title = text;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 }
