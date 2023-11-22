@@ -13,8 +13,9 @@ import javafx.scene.chart.XYChart;
  */
 public class Database {
     // Enter the query command here
+
     private String file_addr = "C:\\Users\\binhp\\Documents\\test.txt";
-    
+
     public Integer getMonthlyOrder(){
         return 20;
     }

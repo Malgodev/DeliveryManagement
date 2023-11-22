@@ -5,23 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fee590f1-1278-4621-9544-f3b8b5b143b5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/build/classes/dashboard/HomeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/dashboard/tableView.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/main/IOFile.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dashboard/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/IOFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/Dashboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/dashboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/DashboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/DashboardDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/DashboardDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/tableView.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/tableView.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/main/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/Database.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dashboard/DashboardDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/DashboardDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dashboard/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dashboard/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -43,10 +55,11 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "Merging HieuDT",
-    "last_opened_file_path": "D:/Study/PTIT/Year 3/Database/DeliveryManagement/src",
+    "last_opened_file_path": "D:/IDEA/OracleDB/dbhomeXE/jdbc/lib",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
   }
 }]]></component>
   <component name="RunManager">

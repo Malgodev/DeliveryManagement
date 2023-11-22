@@ -1,6 +1,16 @@
 package dashboard;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.control.*;
 import java.security.interfaces.DSAKey;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -20,7 +30,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+import javafx.util.Callback;
 import main.Database;
+import model.Parcel;
 
 public class DashboardController implements Initializable {
     
@@ -146,11 +158,16 @@ public class DashboardController implements Initializable {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     private OrderController orderController = new OrderController();
-    
+
+    private Database db = new Database();
+
+    public DashboardController() throws SQLException {
+    }
+
+
     private HomeController homeController = new HomeController();
     
-    private Database db = new Database();
-        
+
     @FXML
     public void changeTransDescription(){
         orderController.setDescTransition(transportType_comboBox.getSelectionModel().getSelectedIndex(), transport_text);
@@ -216,15 +233,79 @@ public class DashboardController implements Initializable {
             System.out.println("cannot");
         }
     }
-    
-    @Override
-    public void initialize(URL location, ResourceBundle resources){
-        refeshAll();
-    }
+
     
     @FXML
+    private void refeshHome(){
+        monthly_order.setText(db.getMonthlyOrder().toString());
+        monthly_pay.setText(db.getMonthlyPayment().toString());
+//        monthly_avrDis
+//        monthly_graph
+    }
+
+
+
+//--------------- ManageController ----------------
+//--------------- Cook, Leave me alone ----------------
+    private ManageController manage = new ManageController();
+
+    @FXML
+    private TableColumn<Parcel, Integer> p_cod;
+    @FXML
+    private TableColumn<Parcel, String> p_codStatus;
+    @FXML
+    private TableColumn<Parcel, Integer> p_id;
+    @FXML
+    private TableColumn<Parcel, String> p_status;
+    @FXML
+    private TableView<Parcel> tbParcel;
+
+    void initParcelTable(){
+        p_id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, Integer>, ObservableValue<Integer>>() {
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Parcel, Integer> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getId());
+                else
+                    return new ReadOnlyObjectWrapper<>(0);
+            }
+        });
+
+        p_cod.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, Integer>, ObservableValue<Integer>>() {
+            public ObservableValue<Integer> call(TableColumn.CellDataFeatures<Parcel, Integer> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getCOD());
+                else
+                    return new ReadOnlyObjectWrapper<>(0);
+            }
+        });
+
+        p_codStatus.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Parcel, String> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getCOD_status());
+                else
+                    return new ReadOnlyObjectWrapper<>("");
+            }
+        });
+        p_status.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Parcel, String> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getStatus());
+                else
+                    return new ReadOnlyObjectWrapper<>("");
+            }
+        });
+
+        manage.initTable(tbParcel);
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        initParcelTable();
+    }
     private void refeshAll(){
         homeController.refeshHome(monthly_order, monthly_pay, monthly_avrWeight, monthly_home_graph);
         orderController.refeshOrder(transportType_comboBox, transport_text);
-    }    
+    }
 }
