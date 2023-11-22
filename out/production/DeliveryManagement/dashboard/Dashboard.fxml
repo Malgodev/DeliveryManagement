@@ -57,9 +57,9 @@
                            <children>
                               <AnchorPane fx:id="home_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Pane layoutX="10.0" layoutY="20.0" prefHeight="150.0" prefWidth="1040.0" stylesheets="@DashboardDesign.css">
+                                    <Pane layoutX="10.0" layoutY="60.0" prefHeight="150.0" prefWidth="1040.0" stylesheets="@DashboardDesign.css">
                                        <children>
-                                          <GridPane prefHeight="150.0" prefWidth="1040.0">
+                                          <GridPane layoutY="1.0" prefHeight="150.0" prefWidth="1040.0">
                                             <columnConstraints>
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -127,9 +127,9 @@
                                           </GridPane>
                                        </children>
                                     </Pane>
-                                    <Pane layoutX="10.0" layoutY="189.0" prefHeight="542.0" prefWidth="1036.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="10.0">
+                                    <Pane layoutX="12.0" layoutY="224.0" prefHeight="542.0" prefWidth="1036.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="12.0">
                                        <children>
-                                          <LineChart fx:id="monthly_home_graph" layoutX="6.0" layoutY="33.0" prefHeight="499.0" prefWidth="1024.0" title="Number of Parcels per Day">
+                                          <LineChart fx:id="monthly_home_graph" layoutX="6.0" layoutY="29.0" prefHeight="499.0" prefWidth="1024.0" title="Number of Parcels per Day">
                                             <xAxis>
                                               <CategoryAxis label="Day" side="BOTTOM" />
                                             </xAxis>
@@ -139,6 +139,7 @@
                                           </LineChart>
                                        </children>
                                     </Pane>
+                                    <ComboBox fx:id="home_month_cb" layoutX="856.0" layoutY="22.0" onAction="#getHomeMonth" prefHeight="25.0" prefWidth="165.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="order_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
@@ -344,7 +345,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <VBox layoutX="16.0" layoutY="16.0" prefHeight="678.0" prefWidth="575.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="479.0" AnchorPane.topAnchor="16.0">
                                        <children>
@@ -558,46 +559,48 @@
                                     </VBox>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="report_pane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" style="-fx-background-color: transparent;" visible="false">
+                              <AnchorPane fx:id="report_pane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" style="-fx-background-color: transparent;">
                                  <children>
-                                    <ScrollPane layoutX="7.0" prefHeight="691.0" prefWidth="1034.0">
+                                    <ScrollPane layoutX="7.0" prefHeight="754.0" prefWidth="1034.0" AnchorPane.bottomAnchor="16.0">
                                        <content>
                                           <AnchorPane prefHeight="1020.0" prefWidth="1010.0" styleClass="scroll-pane" stylesheets="@DashboardDesign.css">
                                              <children>
-                                                <Pane layoutX="14.0" layoutY="14.0" prefHeight="501.0" prefWidth="638.0" styleClass="card" stylesheets="@DashboardDesign.css">
+                                                <Pane layoutX="14.0" layoutY="14.0" prefHeight="739.0" prefWidth="638.0" styleClass="card" stylesheets="@DashboardDesign.css">
                                                    <children>
-                                                      <PieChart layoutX="69.0" layoutY="51.0" />
+                                                      <PieChart fx:id="w_pieChart" layoutX="69.0" layoutY="51.0" />
                                                    </children>
                                                 </Pane>
-                                                <Pane layoutX="23.0" layoutY="538.0" prefHeight="204.0" prefWidth="326.0" styleClass="card" stylesheets="@DashboardDesign.css">
+                                                <VBox layoutX="680.0" layoutY="16.0" prefHeight="739.0" prefWidth="326.0" styleClass="card" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="265.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0">
                                                    <children>
-                                                      <Text layoutX="39.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="thời gian vận chuyển / 1 đơn vị khoảng cách" />
-                                                   </children>
-                                                </Pane>
-                                                <Pane layoutX="364.0" layoutY="538.0" prefHeight="471.0" prefWidth="638.0" styleClass="card" stylesheets="@DashboardDesign.css">
-                                                   <children>
-                                                      <Text layoutX="243.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bảng các khách hàng hay bom" />
-                                                   </children>
-                                                </Pane>
-                                                <VBox layoutX="680.0" layoutY="16.0" prefHeight="502.0" prefWidth="326.0" styleClass="card" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="502.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0">
-                                                   <children>
-                                                      <Label text="Oders amount in a month">
+                                                      <HBox alignment="CENTER_LEFT">
                                                          <VBox.margin>
                                                             <Insets left="10.0" top="8.0" />
                                                          </VBox.margin>
-                                                         <font>
-                                                            <Font size="20.0" />
-                                                         </font>
-                                                      </Label>
-                                                      <VBox prefHeight="519.0" prefWidth="310.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@DashboardDesign.css">
+                                                         <children>
+                                                            <Label prefHeight="30.0" prefWidth="240.0" text="Oders amount in month:">
+                                                               <font>
+                                                                  <Font name="System Bold" size="20.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="4.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <TextField fx:id="tvMonth" alignment="CENTER" onKeyTyped="#updateWH" prefHeight="25.0" prefWidth="46.0">
+                                                               <HBox.margin>
+                                                                  <Insets left="8.0" />
+                                                               </HBox.margin>
+                                                            </TextField>
+                                                         </children>
+                                                      </HBox>
+                                                      <VBox prefHeight="694.0" prefWidth="310.0" style="-fx-background-color: white;" styleClass="card" stylesheets="@DashboardDesign.css">
                                                          <VBox.margin>
                                                             <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                                                          </VBox.margin>
                                                          <children>
-                                                            <TableView prefHeight="498.0" prefWidth="286.0" stylesheets="@tableView.css">
+                                                            <TableView fx:id="tbWH" prefHeight="720.0" prefWidth="286.0" stylesheets="@tableView.css">
                                                               <columns>
-                                                                <TableColumn prefWidth="75.0" text="C1" />
-                                                                <TableColumn prefWidth="75.0" text="C2" />
+                                                                <TableColumn fx:id="w_id" prefWidth="75.0" text="Warehouse ID" />
+                                                                <TableColumn fx:id="w_total" prefWidth="75.0" text="Total" />
                                                               </columns>
                                                                <columnResizePolicy>
                                                                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
