@@ -15,7 +15,8 @@ public class Database {
     // Enter the query command here
 
     private String file_addr = "C:\\Users\\binhp\\Documents\\test.txt";
-
+    
+    
     public Integer getMonthlyOrder(){
         return 20;
     }
@@ -31,6 +32,8 @@ public class Database {
     public XYChart.Series getMonthlyParcelPerDay(){
         XYChart.Series dataSeries = new XYChart.Series();
         dataSeries.setName("Parcels");
+        
+        
         
         dataSeries.getData().add(new XYChart.Data("1", 12));
         dataSeries.getData().add(new XYChart.Data("2", 38));
