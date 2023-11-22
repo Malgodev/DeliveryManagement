@@ -41,7 +41,7 @@
                         <Label layoutX="54.0" layoutY="103.0" text="MAX VESTAPPEN" textFill="WHITE" />
                         <Button fx:id="home_btn" layoutX="10.0" layoutY="180.0" mnemonicParsing="false" onAction="#refeshAll" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn-clicked" stylesheets="@DashboardDesign.css" text="Home" />
                         <Button fx:id="order_btn" layoutX="10.0" layoutY="225.0" mnemonicParsing="false" onAction="#refeshAll" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Order" />
-                        <Button fx:id="search_btn" layoutX="10.0" layoutY="270.0" mnemonicParsing="false" onAction="#refeshAll" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Search" />
+                        <Button fx:id="search_btn" layoutX="10.0" layoutY="270.0" mnemonicParsing="false" onAction="#refeshAll" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Manage" />
                         <Button fx:id="report_btn" layoutX="10.0" layoutY="315.0" mnemonicParsing="false" onAction="#refeshAll" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Report" />
                         <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" onAction="#refeshAll" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Setting" />
                         <Button layoutX="10.0" layoutY="595.0" mnemonicParsing="false" onAction="#refeshAll" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Help" />
@@ -531,10 +531,10 @@
                                                       <Insets top="8.0" />
                                                    </VBox.margin>
                                                 </Label>
-                                                <TableView prefHeight="129.0" prefWidth="398.0" stylesheets="@tableView.css">
+                                                <TableView fx:id="tbTracking" prefHeight="129.0" prefWidth="398.0" stylesheets="@tableView.css">
                                                   <columns>
-                                                    <TableColumn prefWidth="75.0" text="C1" />
-                                                    <TableColumn prefWidth="75.0" text="C2" />
+                                                    <TableColumn fx:id="p_date" prefWidth="75.0" text="Date" />
+                                                    <TableColumn fx:id="p_add" prefWidth="75.0" text="Address" />
                                                   </columns>
                                                    <VBox.margin>
                                                       <Insets left="10.0" right="10.0" top="8.0" />

@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fee590f1-1278-4621-9544-f3b8b5b143b5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/model/Tracking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/DashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dashboard/ManageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/ManageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -33,6 +33,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import main.Database;
 import model.Parcel;
+import model.Tracking;
 
 public class DashboardController implements Initializable {
 
@@ -289,12 +290,20 @@ public class DashboardController implements Initializable {
     @FXML
     private TextField tvMax;
     @FXML
+    private TableView<Tracking> tbTracking;
+    @FXML
+    private TableColumn<Tracking, String> p_date;
+    @FXML
+    private TableColumn<Tracking, String> p_add;
+    @FXML
     void showParcelInfo(){
         manage.displayInformation(tbParcel, tvTitle, tvWeight, tvDes);
+        manage.trackParcel(tbTracking, tbParcel);
     }
     @FXML
     void searchTable() throws SQLException {
         manage.searchParcel(cbSearch, searchBar, tbParcel);
+        showParcelInfo();
     }
     @FXML
     void updateParcel() throws SQLException {
@@ -309,6 +318,7 @@ public class DashboardController implements Initializable {
     @FXML
     void filterParcel() throws SQLException {
         manage.filterParcel(cbStatus, cbCodStatus, tvMin, tvMax, tbParcel);
+        showParcelInfo();
     }
     void initParcelTable(){
         p_id.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, Integer>, ObservableValue<Integer>>() {
@@ -341,6 +351,24 @@ public class DashboardController implements Initializable {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Parcel, String> p) {
                 if (p.getValue() != null)
                     return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getStatus());
+                else
+                    return new ReadOnlyObjectWrapper<>("");
+            }
+        });
+
+        p_date.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Tracking, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Tracking, String> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Tracking) p.getValue()).getDate()).asString();
+                else
+                    return new ReadOnlyObjectWrapper<>("");
+            }
+        });
+
+        p_add.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Tracking, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Tracking, String> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Tracking) p.getValue()).getAddress());
                 else
                     return new ReadOnlyObjectWrapper<>("");
             }
