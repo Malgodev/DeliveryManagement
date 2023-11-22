@@ -57,9 +57,9 @@
                            <children>
                               <AnchorPane fx:id="home_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Pane layoutX="10.0" layoutY="20.0" prefHeight="150.0" prefWidth="1040.0" stylesheets="@DashboardDesign.css">
+                                    <Pane layoutX="10.0" layoutY="60.0" prefHeight="150.0" prefWidth="1040.0" stylesheets="@DashboardDesign.css">
                                        <children>
-                                          <GridPane prefHeight="150.0" prefWidth="1040.0">
+                                          <GridPane layoutY="1.0" prefHeight="150.0" prefWidth="1040.0">
                                             <columnConstraints>
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -127,9 +127,9 @@
                                           </GridPane>
                                        </children>
                                     </Pane>
-                                    <Pane layoutX="10.0" layoutY="189.0" prefHeight="542.0" prefWidth="1036.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="10.0">
+                                    <Pane layoutX="12.0" layoutY="224.0" prefHeight="542.0" prefWidth="1036.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="12.0">
                                        <children>
-                                          <LineChart fx:id="monthly_home_graph" layoutX="6.0" layoutY="33.0" prefHeight="499.0" prefWidth="1024.0" title="Number of Parcels per Day">
+                                          <LineChart fx:id="monthly_home_graph" layoutX="6.0" layoutY="29.0" prefHeight="499.0" prefWidth="1024.0" title="Number of Parcels per Day">
                                             <xAxis>
                                               <CategoryAxis label="Day" side="BOTTOM" />
                                             </xAxis>
@@ -139,6 +139,7 @@
                                           </LineChart>
                                        </children>
                                     </Pane>
+                                    <ComboBox fx:id="home_month_cb" layoutX="856.0" layoutY="22.0" onAction="#getHomeMonth" prefHeight="25.0" prefWidth="165.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="order_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
