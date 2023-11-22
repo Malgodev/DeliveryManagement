@@ -4,6 +4,7 @@
  */
 package dashboard;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
@@ -19,7 +20,11 @@ import main.Database;
  * @author binhp
  */
 public class OrderController {
-    private final Database db = new Database();
+    private final Database db;
+
+    public OrderController() throws SQLException {
+        this.db = new Database();
+    }
     
     public String checkCusForm(TextField fname, TextField lname, TextField phone, TextField email, TextField addr, ComboBox<?> state, ComboBox<?> city){
         String info = "";

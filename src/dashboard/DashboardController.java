@@ -36,18 +36,6 @@ import model.Parcel;
 
 public class DashboardController implements Initializable {
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        initParcelTable();
-    }
-    @FXML
-    private void refeshAll(){
-        homeController.refeshHome(monthly_order, monthly_pay, monthly_avrWeight, monthly_home_graph);
-        orderController.refeshOrder(transportType_comboBox, transport_text);
-    }
-
-
     @FXML
     private TextField address_rcv_tf;
 
@@ -176,6 +164,19 @@ public class DashboardController implements Initializable {
     private HomeController homeController = new HomeController();
     
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        refeshAll();
+        initParcelTable();
+    }
+    
+    @FXML
+    private void refeshAll(){
+        homeController.refeshHome(monthly_order, monthly_pay, monthly_avrWeight, monthly_home_graph);
+        orderController.refeshOrder(transportType_comboBox, transport_text);
+    }    
+    
     @FXML
     public void changeTransDescription(){
         orderController.setDescTransition(transportType_comboBox.getSelectionModel().getSelectedIndex(), transport_text);
@@ -240,15 +241,6 @@ public class DashboardController implements Initializable {
         }else{
             System.out.println("cannot");
         }
-    }
-
-    
-    @FXML
-    private void refeshHome(){
-        monthly_order.setText(db.getMonthlyOrder().toString());
-        monthly_pay.setText(db.getMonthlyPayment().toString());
-//        monthly_avrDis
-//        monthly_graph
     }
 
 
@@ -343,7 +335,4 @@ public class DashboardController implements Initializable {
         manage.displayInformation(tbParcel, tvTitle, tvWeight, tvDes);
         manage.initComboBox(cbSearch, cbStatus, cbCodStatus);
     }
-
-
-
 }

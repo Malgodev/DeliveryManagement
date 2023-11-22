@@ -4,6 +4,7 @@
  */
 package dashboard;
 
+import java.sql.SQLException;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
@@ -17,12 +18,18 @@ import main.Database;
  * @author binhp
  */
 public class HomeController {    
-    private final Database db = new Database();
+    private final Database db;
+
+    public HomeController() throws SQLException {
+        this.db = new Database();
+    }
     
     public void refeshHome(Text order, Text payment, Text weight, LineChart<String, Number> chart){
         order.setText(db.getMonthlyOrder().toString());
         payment.setText(db.getMonthlyPayment().toString());
         weight.setText(db.getMonthlyAvgWeight().toString());
+        
+        chart.getData().clear();
         chart.getData().add(db.getMonthlyParcelPerDay());
     }
 }
