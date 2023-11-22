@@ -45,6 +45,12 @@
                         <Button fx:id="report_btn" layoutX="10.0" layoutY="315.0" mnemonicParsing="false" onAction="#refeshAll" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Report" />
                         <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" onAction="#refeshAll" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Setting" />
                         <Button layoutX="10.0" layoutY="595.0" mnemonicParsing="false" onAction="#refeshAll" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Help" />
+                        <Button fx:id="home_btn" layoutX="10.0" layoutY="180.0" mnemonicParsing="false" onAction="#refeshHome" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn-clicked" stylesheets="@DashboardDesign.css" text="Home" />
+                        <Button fx:id="order_btn" layoutX="10.0" layoutY="225.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Order" />
+                        <Button fx:id="search_btn" layoutX="10.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Search" />
+                        <Button fx:id="report_btn" layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Report" />
+                        <Button layoutX="10.0" layoutY="550.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Setting" />
+                        <Button layoutX="10.0" layoutY="595.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="180.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Help" />
                         <Line endX="81.5" layoutX="109.0" layoutY="635.0" startX="-100.0" stroke="WHITE" />
                         <Button layoutX="27.0" layoutY="651.0" mnemonicParsing="false" onAction="#refeshAll" prefHeight="40.0" prefWidth="147.0" styleClass="nav-btn" stylesheets="@DashboardDesign.css" text="Log out" />
                      </children>
