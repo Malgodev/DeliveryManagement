@@ -13,6 +13,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
 import java.security.interfaces.DSAKey;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -44,12 +45,6 @@ public class DashboardController implements Initializable {
 
     @FXML
     private TextField address_snd_tf;
-
-    @FXML
-    private ComboBox<?> city_rcv_tf;
-
-    @FXML
-    private ComboBox<?> city_snd_tf;
 
     @FXML
     private CheckBox cod_cb;
@@ -127,25 +122,10 @@ public class DashboardController implements Initializable {
     private AnchorPane report_pane;
 
     @FXML
-    private ComboBox<?> road_snd_tf;
-
-    @FXML
     private Button search_btn;
 
     @FXML
     private AnchorPane search_pane;
-
-    @FXML
-    private ComboBox<?> state_rcv_tf;
-
-    @FXML
-    private ComboBox<?> state_snd_tf;
-
-    @FXML
-    private ComboBox<?> town_rcv_id;
-
-    @FXML
-    private ComboBox<?> town_snd_tf;
 
     @FXML
     private ComboBox<String> transportType_comboBox;
@@ -158,6 +138,14 @@ public class DashboardController implements Initializable {
     
     @FXML
     private ComboBox<String> home_month_cb;    
+    
+    @FXML
+    private TextField zip_rcv_tf;
+
+    @FXML
+    private TextField zip_snd_tf;
+
+////////////////////////////////////////////////////////////////////////////////    
   
     private OrderController orderController = new OrderController();
 
@@ -222,50 +210,45 @@ public class DashboardController implements Initializable {
     
         
     @FXML
-    private ArrayList<String> submitForm(){
-        ArrayList<String> return_info = new ArrayList<>();
-        
-        
-        String snd_status = orderController.checkCusForm(
-                fname_snd_tf, lname_snd_tf, phone_snd_tf, 
-                email_snd_tf, address_snd_tf, state_snd_tf, city_snd_tf);
-                
-        if (!snd_status.equals("no")) return_info.add(snd_status);
-        else System.out.println("bruh");
-        
-        String rcv_status = orderController.checkCusForm(fname_rcv_tf, lname_rcv_tf, phone_rcv_tf,
-                email_rcv_tf, address_rcv_tf, state_rcv_tf, city_rcv_tf);
-        
-        if (!snd_status.equals("no")) return_info.add(rcv_status);
-        else System.out.println("lmao");        
-        
-        return return_info;
+    private void submitForm(){
+        System.out.println("cust event");
     }
     
     @FXML
-    private String parcelEvent(){
-        String status = orderController.checkParcelForm(name_parcel_tf, weight_parcel_tf, qtt_parcel_tf, 
-                description_parcel_tf, cod_tf, (ComboBox<String>) transportType_comboBox);
-        
-        return status;
+    private void parcelEvent(){
+        System.out.println("parcel event");
+//        ArrayList<String> status = orderController.checkParcelForm(name_parcel_tf, weight_parcel_tf, qtt_parcel_tf, 
+//                description_parcel_tf, cod_tf, (ComboBox<String>) transportType_comboBox);
+//        
+//        return status;
     }
 
 
     @FXML
     private void createOrder(){ // missing parcel
-        ArrayList<String> cus_info = submitForm();
-        
-        if (cus_info.size() == 2){
-            db.insertCustomer(cus_info.get(0));
-            db.insertCustomer(cus_info.get(1));
-        }else{
-            System.out.println("cannot");
+        try{
+            ArrayList<String> status_snd = orderController.getCustInfo(fname_snd_tf, lname_snd_tf, phone_snd_tf,
+                    email_snd_tf, address_snd_tf, zip_snd_tf);   
+            
+            ArrayList<String> status_rcv = orderController.getCustInfo(fname_rcv_tf, lname_rcv_tf, phone_rcv_tf,
+                    email_rcv_tf, address_rcv_tf, zip_rcv_tf);
+            
+            ArrayList<String> status_parcel = orderController.getParcelForm(name_parcel_tf, weight_parcel_tf, qtt_parcel_tf, 
+                description_parcel_tf, cod_cb, cod_tf, (ComboBox<String>) transportType_comboBox);
+            
+            if (!status_snd.isEmpty() && !status_rcv.isEmpty() && !status_parcel.isEmpty()){
+                db.createParcel(status_snd, status_rcv, status_parcel);
+            }
+            
+        }catch (NullPointerException e){
+            System.out.println("bruh");
         }
+
     }
     
     @FXML
     private void getHomeMonth(){
-        home_month = home_month_cb.getSelectionModel().getSelectedIndex();
+        home_month = home_month_cb.getSelectionModel().getSelectedIndex() + 1;
         refeshAll();
     }
 
@@ -287,7 +270,7 @@ public class DashboardController implements Initializable {
         
         home_month_cb.setItems(month_name);
         home_month_cb.getSelectionModel().select(LocalDate.now().getMonthValue() - 1);
-        home_month = LocalDate.now().getMonthValue() - 1;
+        home_month = LocalDate.now().getMonthValue();
     }
 
     

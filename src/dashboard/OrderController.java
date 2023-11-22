@@ -7,6 +7,7 @@ package dashboard;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -26,42 +27,54 @@ public class OrderController {
         this.db = new Database();
     }
     
-    public String checkCusForm(TextField fname, TextField lname, TextField phone, TextField email, TextField addr, ComboBox<?> state, ComboBox<?> city){
-        String info = "";
-        if (fname.getText().equals("")) return "no";
-        else info += fname.getText() + " ";
-        if (lname.getText().equals("")) return "no";
-        else info += lname.getText() + ", ";
-        if (phone.getText().equals("")) return "no";
-        else info += phone.getText() + ", ";
-        if (email.getText().equals("")) return "no";
-        else info += email.getText() + ", ";
-        if (addr.getText().equals("")) return "no";
-        else info += addr.getText();
+    public ArrayList<String> getParcelForm(TextField name, TextField weight, TextField qtt, TextArea description, CheckBox isCOD ,TextField cod, ComboBox<String> trans_type){
+        ArrayList<String> info = new ArrayList<>();
         
-        return info;
-    }        
-    
-    public String checkParcelForm(TextField name, TextField weight, TextField qtt, TextArea description, TextField cod, ComboBox<String> trans_type){
-        String info = "";
-        if (name.getText().equals("")) return "no";
-        else info += name.getText() + ", ";
+        if (name.getText().equals("")) return null;
+        else info.add(name.getText());
+        
         try{
             if (weight.getText().equals("") || qtt.getText().equals("")){
-                return "no";
+                return null;
             }else{
                 Integer total_weight = Integer.parseInt(weight.getText()) * Integer.parseInt(qtt.getText()); 
-                info += total_weight + ", ";
+                info.add(total_weight.toString());
             }
         }catch (NumberFormatException ex){
             System.out.println("Must be a number!");
-            return "no";
+            return null;
         }
-        info += description.getText() + ", ";
+        info.add(description.getText());
         
-        if (cod.getText().equals("")) return "no";
-        else info += cod.getText() + ", ";
         
+        if(isCOD.isSelected()){
+            if (cod.getText().equals("")) return null;
+            else info.add(cod.getText());
+        }else{
+            info.add("");
+        }
+        
+        info.add(String.valueOf(trans_type.getSelectionModel().getSelectedIndex()));
+        
+        return info;
+    }
+    
+    public ArrayList<String> getCustInfo(TextField fname, TextField lname, TextField phone, TextField email, TextField addr, TextField zip){
+        ArrayList<String> info = new ArrayList<>();
+        if (fname.getText().equals("")) return null;
+        else info.add((fname.getText() + " " + lname.getText()).trim());
+        
+        if (phone.getText().equals("")) return null;
+        else info.add(phone.getText());
+        
+        info.add(email.getText());
+        
+        if (addr.getText().equals("")) return null;
+        else info.add(addr.getText());
+ 
+        if (zip.getText().equals("")) return null;
+        else info.add(zip.getText());        
+                
         return info;
     }
     
