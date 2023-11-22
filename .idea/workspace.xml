@@ -5,17 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fee590f1-1278-4621-9544-f3b8b5b143b5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dashboard/ManageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Connect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Parcel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/Dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/main/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/main/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DeliveryManagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeliveryManagement.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/Dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/DashboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/DashboardDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/DashboardDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/dashboard/tableView.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/dashboard/tableView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/Database.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dashboard/DashboardDesign.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/DashboardDesign.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dashboard/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dashboard/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +54,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "HieuDT",
+    "git-widget-placeholder": "Merging HieuDT",
     "last_opened_file_path": "D:/IDEA/OracleDB/dbhomeXE/jdbc/lib",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
