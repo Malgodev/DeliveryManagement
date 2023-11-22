@@ -77,6 +77,7 @@ public class OrderController {
     }
     
     public void refeshOrder(ComboBox<String> transType, Text description){
+        transType.getItems().clear();
         transType.getItems().addAll(db.getTransportType());
         transType.getSelectionModel().select(0);
         setDescTransition(0, description);
