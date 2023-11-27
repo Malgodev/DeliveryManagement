@@ -317,9 +317,9 @@ public class Database{
         DecimalFormat df = new DecimalFormat("#.##");
 
         if (amount >= 1_000_000_000) {
-            return df.format(amount / 1_000_000_000) + "b";
+            return df.format(amount / 1_000_000_000) + " B";
         } else if (amount >= 1_000_000) {
-            return df.format(amount / 1_000_000) + "m";
+            return df.format(amount / 1_000_000) + " M";
         }
 
         return df.format(amount);

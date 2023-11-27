@@ -190,10 +190,16 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </TextField>
-                                                <ComboBox fx:id="state_snd_tf" layoutX="22.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                                <ComboBox fx:id="city_snd_tf" layoutX="310.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
-                                                <ComboBox fx:id="town_snd_tf" layoutX="21.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                                <ComboBox fx:id="road_snd_tf" layoutX="309.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
+                                                <Text layoutX="20.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ZIP:" wrappingWidth="153.13671875">
+                                                   <font>
+                                                      <Font name="Inter Regular" size="14.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField fx:id="zip_snd_tf" layoutX="20.0" layoutY="220.0" onAction="#submitForm" prefHeight="30.0" prefWidth="560.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </TextField>
                                              </children>
                                           </AnchorPane>
                                           <Text fill="WHITE" layoutX="40.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SENDER">
@@ -252,10 +258,16 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </TextField>
-                                                <ComboBox fx:id="state_rcv_tf" layoutX="22.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                                <ComboBox fx:id="city_rcv_tf" layoutX="310.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
-                                                <ComboBox fx:id="town_rcv_id" layoutX="21.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                                <ComboBox layoutX="309.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
+                                                <Text layoutX="20.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ZIP:" wrappingWidth="153.13671875">
+                                                   <font>
+                                                      <Font name="Inter Regular" size="14.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField fx:id="zip_rcv_tf" layoutX="20.0" layoutY="220.0" onAction="#submitForm" prefHeight="30.0" prefWidth="560.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </TextField>
                                              </children>
                                           </AnchorPane>
                                           <Text fill="WHITE" layoutX="40.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RECEIVER">
@@ -345,13 +357,15 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <VBox layoutX="16.0" layoutY="16.0" prefHeight="678.0" prefWidth="575.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="479.0" AnchorPane.topAnchor="16.0">
                                        <children>
                                           <TableView fx:id="tbParcel" fixedCellSize="0.0" onMouseClicked="#showParcelInfo" prefHeight="770.0" prefWidth="575.0" stylesheets="@tableView.css">
                                             <columns>
                                               <TableColumn fx:id="p_id" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="p_sender" prefWidth="75.0" text="Sender" />
+                                                <TableColumn fx:id="p_recipient" prefWidth="75.0" text="Recipient" />
                                                 <TableColumn fx:id="p_cod" prefWidth="75.0" text="COD" />
                                                 <TableColumn fx:id="p_codStatus" prefWidth="75.0" text="COD status" />
                                                 <TableColumn fx:id="p_status" prefWidth="75.0" text="Status" />
@@ -559,15 +573,15 @@
                                     </VBox>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="report_pane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" style="-fx-background-color: transparent;">
+                              <AnchorPane fx:id="report_pane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" style="-fx-background-color: transparent;" visible="false">
                                  <children>
                                     <ScrollPane layoutX="7.0" prefHeight="754.0" prefWidth="1034.0" AnchorPane.bottomAnchor="16.0">
                                        <content>
                                           <AnchorPane prefHeight="1020.0" prefWidth="1010.0" styleClass="scroll-pane" stylesheets="@DashboardDesign.css">
                                              <children>
-                                                <Pane layoutX="14.0" layoutY="14.0" prefHeight="739.0" prefWidth="638.0" styleClass="card" stylesheets="@DashboardDesign.css">
+                                                <Pane layoutX="14.0" layoutY="14.0" prefHeight="739.0" prefWidth="638.0" style="-fx-background-color: D3756B;" styleClass="card" stylesheets="@DashboardDesign.css">
                                                    <children>
-                                                      <PieChart fx:id="w_pieChart" layoutX="69.0" layoutY="51.0" />
+                                                      <PieChart fx:id="w_pieChart" labelsVisible="false" layoutX="43.0" layoutY="27.0" legendSide="LEFT" prefHeight="325.0" prefWidth="551.0" styleClass="chart-legend-item" stylesheets="@DashboardDesign.css" title="Fee for each transportaion type" />
                                                    </children>
                                                 </Pane>
                                                 <VBox layoutX="680.0" layoutY="16.0" prefHeight="739.0" prefWidth="326.0" styleClass="card" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="265.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0">

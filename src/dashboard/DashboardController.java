@@ -35,6 +35,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 import javafx.util.Pair;
 import main.Database;
+import main.Validate;
 import model.Parcel;
 import model.Tracking;
 
@@ -223,11 +224,28 @@ public class DashboardController implements Initializable {
 //        
 //        return status;
     }
-
+    Validate validate = new Validate();
 
     @FXML
     private void createOrder(){ // missing parcel
         try{
+//            if(!validate.isValidEmail(email_snd_tf.getText()) || !validate.isValidEmail(email_rcv_tf.getText())){
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setTitle("Error");
+//                alert.setHeaderText("Invalid email");
+//                alert.setContentText("Please enter a valid email");
+//                alert.showAndWait();
+//                return;
+//            }
+
+            if(!validate.isMobileNumberValid(phone_snd_tf.getText()) || !validate.isMobileNumberValid(phone_rcv_tf.getText())){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Invalid phone number");
+                alert.setContentText("Please enter a valid phone number");
+                alert.showAndWait();
+                return;
+            }
             ArrayList<String> status_snd = orderController.getCustInfo(fname_snd_tf, lname_snd_tf, phone_snd_tf,
                     email_snd_tf, address_snd_tf, zip_snd_tf);   
             
@@ -281,6 +299,10 @@ public class DashboardController implements Initializable {
 
     @FXML
     private TableColumn<Parcel, Integer> p_cod;
+    @FXML
+    private TableColumn<Parcel, String> p_sender;
+    @FXML
+    private TableColumn<Parcel, String> p_recipient;
     @FXML
     private TableColumn<Parcel, String> p_codStatus;
     @FXML
@@ -345,6 +367,24 @@ public class DashboardController implements Initializable {
                     return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getId());
                 else
                     return new ReadOnlyObjectWrapper<>(0);
+            }
+        });
+
+        p_sender.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Parcel, String> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getSender());
+                else
+                    return new ReadOnlyObjectWrapper<>("");
+            }
+        });
+
+        p_recipient.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Parcel, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Parcel, String> p) {
+                if (p.getValue() != null)
+                    return new ReadOnlyObjectWrapper<>(((Parcel) p.getValue()).getReceiver());
+                else
+                    return new ReadOnlyObjectWrapper<>("");
             }
         });
 

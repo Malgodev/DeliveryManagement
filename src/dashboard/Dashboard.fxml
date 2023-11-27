@@ -357,13 +357,15 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="search_pane" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <VBox layoutX="16.0" layoutY="16.0" prefHeight="678.0" prefWidth="575.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="479.0" AnchorPane.topAnchor="16.0">
                                        <children>
                                           <TableView fx:id="tbParcel" fixedCellSize="0.0" onMouseClicked="#showParcelInfo" prefHeight="770.0" prefWidth="575.0" stylesheets="@tableView.css">
                                             <columns>
                                               <TableColumn fx:id="p_id" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="p_sender" prefWidth="75.0" text="Sender" />
+                                                <TableColumn fx:id="p_recipient" prefWidth="75.0" text="Recipient" />
                                                 <TableColumn fx:id="p_cod" prefWidth="75.0" text="COD" />
                                                 <TableColumn fx:id="p_codStatus" prefWidth="75.0" text="COD status" />
                                                 <TableColumn fx:id="p_status" prefWidth="75.0" text="Status" />
@@ -571,7 +573,7 @@
                                     </VBox>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="report_pane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" style="-fx-background-color: transparent;">
+                              <AnchorPane fx:id="report_pane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" style="-fx-background-color: transparent;" visible="false">
                                  <children>
                                     <ScrollPane layoutX="7.0" prefHeight="754.0" prefWidth="1034.0" AnchorPane.bottomAnchor="16.0">
                                        <content>

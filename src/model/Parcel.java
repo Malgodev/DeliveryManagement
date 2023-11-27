@@ -4,10 +4,12 @@ public class Parcel {
     private int id;
     private double weight;
     private int transportId;
-    private String title, note;
+    private String title, note, sender, receiver;
     private Integer COD, COD_status, status;
 
-    public Parcel(int id, double weight, int transportId, String title, String note, Integer COD, Integer COD_status, Integer status) {
+    public Parcel(int id, double weight, int transportId, String title, String note, Integer COD, Integer COD_status, Integer status, String sender, String receiver) {
+        this.sender = sender;
+        this.receiver = receiver;
         this.id = id;
         this.weight = weight;
         this.transportId = transportId;
@@ -40,6 +42,14 @@ public class Parcel {
 
     public int getCOD() {
         return COD;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
     }
 
     public String getCOD_status() {

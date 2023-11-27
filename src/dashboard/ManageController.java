@@ -26,7 +26,7 @@ public class ManageController {
 
     ObservableList<Parcel> parcelList = FXCollections.observableArrayList();
     ObservableList<Tracking> trackList = FXCollections.observableArrayList();
-    ObservableList<String> searchs = FXCollections.observableArrayList( "ID", "Title");
+    ObservableList<String> searchs = FXCollections.observableArrayList( "ID", "Title", "Sender", "Recipient");
     ObservableList<String> parcelStatus = FXCollections.observableArrayList(
             "Status",
             "Waiting for transiting",
@@ -46,7 +46,7 @@ public class ManageController {
 
     public void initTable(TableView<Parcel> table){
         try {
-            res = state.executeQuery("select * from parcel");
+            res = state.executeQuery("select parcel#, weight, transport#, title, note, COD, COD_status, status, send_date, A.full_name as sender, B.full_name as recipient from parcel natural join sending, customer A, customer B where sender# = A.customer# and recipient# = B.customer#");
             while (res.next()) {
                 parcelList.add(new Parcel(res.getInt("parcel#"),
                         res.getDouble("weight"),
@@ -55,7 +55,9 @@ public class ManageController {
                         res.getString("note"),
                         res.getInt("COD"),
                         res.getInt("COD_status"),
-                        res.getInt("status"))
+                        res.getInt("status"),
+                        res.getString("sender"),
+                        res.getString("recipient"))
                 );
             }
         } catch (SQLException e) {
@@ -76,7 +78,9 @@ public class ManageController {
                         res.getString("note"),
                         res.getInt("COD"),
                         res.getInt("COD_status"),
-                        res.getInt("status"))
+                        res.getInt("status"),
+                        res.getString("sender"),
+                        res.getString("recipient"))
                 );
                 table.setItems(parcelList);
                 table.getSelectionModel().selectFirst();
@@ -122,7 +126,7 @@ public class ManageController {
         String searchType = search.getSelectionModel().getSelectedItem();
         if(searchType.equals("ID")){
             try {
-                query = "SELECT * FROM parcel WHERE PARCEL# = "  + searchBar.getText();
+                query = "select parcel#, weight, transport#, title, note, COD, COD_status, status, send_date, A.full_name as sender, B.full_name as recipient from parcel natural join sending, customer A, customer B where sender# = A.customer# and recipient# = B.customer# and PARCEL# = "  + searchBar.getText();
                 statement = connection.prepareStatement(query);
                 res = statement.executeQuery();
                 updateTable(table, res);
@@ -134,7 +138,25 @@ public class ManageController {
             System.out.println("Title");
             try {
 
-                query = "SELECT * FROM parcel WHERE title LIKE '%" + searchBar.getText() + "%'";
+                query = "select parcel#, weight, transport#, title, note, COD, COD_status, status, send_date, A.full_name as sender, B.full_name as recipient from parcel natural join sending, customer A, customer B where sender# = A.customer# and recipient# = B.customer# and title LIKE '%" + searchBar.getText() + "%'";
+                statement = connection.prepareStatement(query);
+                res = statement.executeQuery();
+                updateTable(table, res);
+
+            } catch (SQLException ignored) {
+            }
+        }else if(searchType.equals("Sender")) {
+            try {
+                query = "select parcel#, weight, transport#, title, note, COD, COD_status, status, send_date, A.full_name as sender, B.full_name as recipient from parcel natural join sending, customer A, customer B where sender# = A.customer# and recipient# = B.customer# and A.full_name LIKE '%" + searchBar.getText() + "%'";
+                statement = connection.prepareStatement(query);
+                res = statement.executeQuery();
+                updateTable(table, res);
+
+            } catch (SQLException ignored) {
+            }
+        }else if (searchType.equals("Recipient")){
+            try {
+                query = "select parcel#, weight, transport#, title, note, COD, COD_status, status, send_date, A.full_name as sender, B.full_name as recipient from parcel natural join sending, customer A, customer B where sender# = A.customer# and recipient# = B.customer# and B.full_name LIKE '%" + searchBar.getText() + "%'";
                 statement = connection.prepareStatement(query);
                 res = statement.executeQuery();
                 updateTable(table, res);
@@ -165,16 +187,16 @@ public class ManageController {
 
     String convertStatus(String status){
         return switch (status){
-            case "Waiting for transiting" -> "WHERE status = 0";
-            case "Transiting" -> "WHERE status = 1";
-            case "Delivering" -> "WHERE status = 2";
-            case "Waiting for re-delivering" -> "WHERE status = 3";
-            case "Delivered" -> "WHERE status = 4";
-            case "Processing" -> "WHERE status = 5";
-            case "Waiting for returning" -> "WHERE status = 6";
-            case "Returning" -> "WHERE status = 7";
-            case "Returned" -> "WHERE status = 8";
-            default -> "WHERE status = status";
+            case "Waiting for transiting" -> "and status = 0";
+            case "Transiting" -> "and status = 1";
+            case "Delivering" -> "and status = 2";
+            case "Waiting for re-delivering" -> "and status = 3";
+            case "Delivered" -> "and status = 4";
+            case "Processing" -> "and status = 5";
+            case "Waiting for returning" -> "and status = 6";
+            case "Returning" -> "and status = 7";
+            case "Returned" -> "and status = 8";
+            default -> "and status = status";
         };
 
     }
@@ -198,7 +220,7 @@ public class ManageController {
         Double min = Double.parseDouble(tvMin.getText());
         Double max = Double.parseDouble(tvMax.getText());
         try {
-            query = "SELECT * FROM parcel " + convertStatus(statusType) + " " + convertCodStatus(codStatusType) + " " + convertWeight(min, max);
+            query = "select parcel#, weight, transport#, title, note, COD, COD_status, status, send_date, A.full_name as sender, B.full_name as recipient from parcel natural join sending, customer A, customer B where sender# = A.customer# and recipient# = B.customer# " + convertStatus(statusType) + " " + convertCodStatus(codStatusType) + " " + convertWeight(min, max);
             System.out.println(query);
             statement = connection.prepareStatement(query);
             res = statement.executeQuery();
