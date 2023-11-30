@@ -18,30 +18,26 @@ public class Validate {
 
 
     public boolean isMobileNumberValid(String phoneNumber) {
-        boolean isValid = false;
 
-        // Use the libphonenumber library to validate Number
-        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-        Phonenumber.PhoneNumber swissNumberProto = null;
-        try {
-            swissNumberProto = phoneUtil.parse(phoneNumber, "CH");
-        } catch (NumberParseException e) {
-            System.err.println("NumberParseException was thrown: " + e.toString());
-        }
-
-        if (phoneUtil.isValidNumber(swissNumberProto)) {
-            isValid = true;
-        }
-
-        // The Library failed to validate number if it contains - sign
-        // thus use regex to validate Mobile Number.
-        String regex = "[0-9*#+() -]*";
+        String regex = "^[0-9\\-\\+]{10}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(phoneNumber);
 
         if (matcher.matches()) {
-            isValid = true;
+           return true;
         }
-        return isValid;
+        return false;
+    }
+
+    public boolean isZipValid(String zip) {
+
+        String regex = "^[0-9\\-\\+]{5}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(zip);
+
+        if (matcher.matches()) {
+            return true;
+        }
+        return false;
     }
 }

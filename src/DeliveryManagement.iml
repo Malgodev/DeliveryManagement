@@ -10,5 +10,6 @@
     <orderEntry type="library" exported="" name="lib" level="project" />
     <orderEntry type="library" exported="" name="lib2" level="project" />
     <orderEntry type="library" exported="" name="libphonenumber-8.9.9" level="project" />
+    <orderEntry type="library" exported="" name="controlsfx-8.40.14" level="project" />
   </component>
 </module>

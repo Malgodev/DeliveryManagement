@@ -1,5 +1,6 @@
 package dashboard;
 
+import java.awt.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,8 +29,12 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.BlurType;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import javafx.util.Callback;
@@ -225,27 +230,57 @@ public class DashboardController implements Initializable {
 //        return status;
     }
     Validate validate = new Validate();
+    Effect invalidEffect = new DropShadow(BlurType.GAUSSIAN, Color.RED, 10, 0.0, 0, 0);
+
+    @FXML
+    private void validatePhone(){
+        if(!validate.isMobileNumberValid(phone_snd_tf.getText())){
+            phone_snd_tf.setEffect(invalidEffect);
+        }else phone_snd_tf.setEffect(null);
+    }
+
+    @FXML
+    private void validateSenderZip(){
+        if(!validate.isZipValid(zip_snd_tf.getText())){
+            zip_snd_tf.setEffect(invalidEffect);
+        }else zip_snd_tf.setEffect(null);
+    }
+
+    @FXML
+    private void validateReceiverZip(){
+        if(!validate.isZipValid(zip_rcv_tf.getText())){
+            zip_rcv_tf.setEffect(invalidEffect);
+        }else zip_rcv_tf.setEffect(null);
+    }
+
+    @FXML
+    private void validateReiPhone(){
+        if(!validate.isMobileNumberValid(phone_rcv_tf.getText())){
+            phone_rcv_tf.setEffect(invalidEffect);
+        }else phone_rcv_tf.setEffect(null);
+    }
 
     @FXML
     private void createOrder(){ // missing parcel
         try{
-//            if(!validate.isValidEmail(email_snd_tf.getText()) || !validate.isValidEmail(email_rcv_tf.getText())){
-//                Alert alert = new Alert(Alert.AlertType.ERROR);
-//                alert.setTitle("Error");
-//                alert.setHeaderText("Invalid email");
-//                alert.setContentText("Please enter a valid email");
-//                alert.showAndWait();
-//                return;
-//            }
+            if(!validate.isZipValid(zip_snd_tf.getText()) || !validate.isZipValid(zip_rcv_tf.getText())){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Invalid zip-code");
+                alert.setContentText("Please enter a valid zip-code include 5 digits");
+                alert.showAndWait();
+                return;
+            }
 
             if(!validate.isMobileNumberValid(phone_snd_tf.getText()) || !validate.isMobileNumberValid(phone_rcv_tf.getText())){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setHeaderText("Invalid phone number");
-                alert.setContentText("Please enter a valid phone number");
+                alert.setContentText("Please enter a valid phone number include 10 digits");
                 alert.showAndWait();
                 return;
             }
+
             ArrayList<String> status_snd = orderController.getCustInfo(fname_snd_tf, lname_snd_tf, phone_snd_tf,
                     email_snd_tf, address_snd_tf, zip_snd_tf);   
             
@@ -253,14 +288,14 @@ public class DashboardController implements Initializable {
                     email_rcv_tf, address_rcv_tf, zip_rcv_tf);
             
             ArrayList<String> status_parcel = orderController.getParcelForm(name_parcel_tf, weight_parcel_tf, qtt_parcel_tf, 
-                description_parcel_tf, cod_cb, cod_tf, (ComboBox<String>) transportType_comboBox);
+                description_parcel_tf, cod_cb, cod_tf, transportType_comboBox);
             
             if (!status_snd.isEmpty() && !status_rcv.isEmpty() && !status_parcel.isEmpty()){
                 db.createParcel(status_snd, status_rcv, status_parcel);
             }
             
         }catch (NullPointerException e){
-            System.out.println("bruh");
+            System.out.println("Null pointer exception");
         }
 
     }
