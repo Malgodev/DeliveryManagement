@@ -81,10 +81,10 @@ public class OrderController {
     public void setDescTransition(Integer i, Text description){
         String desc = "404 not found";
         
-        if (i == 0) desc = "1 day";
-        else if (i == 1) desc = "2 days";
-        else if (i == 2) desc = "3 days";
-        else if (i == 3) desc = "4 days";
+        if (i == 0) desc = "Consistent progression of cargo, maintaining regular schedules and procedures, ensuring steady movement without deviations or sudden changes.";
+        else if (i == 1) desc = "Optimizing logistics for swift cargo movement, prioritizing speed to meet deadlines efficiently, minimizing transit durations for timely deliveries.";
+        else if (i == 2) desc = "Personalized and accelerated cargo services, catering to urgent shipments with specialized handling, dedicated support, and premium delivery options.";
+        else if (i == 3) desc = "Immediate responses to unexpected disruptions, swiftly adapting routes, managing sudden inventory changes, ensuring continuous cargo flow despite unforeseen challenges.";
         
         description.setText(desc);
     }
