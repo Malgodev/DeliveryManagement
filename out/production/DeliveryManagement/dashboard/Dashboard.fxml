@@ -55,7 +55,7 @@
                      <children>
                         <AnchorPane prefHeight="700.0" prefWidth="1060.0" styleClass="pane" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                            <children>
-                              <AnchorPane fx:id="home_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="home_pane" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Pane layoutX="10.0" layoutY="60.0" prefHeight="150.0" prefWidth="1040.0" stylesheets="@DashboardDesign.css">
                                        <children>
@@ -142,7 +142,7 @@
                                     <ComboBox fx:id="home_month_cb" layoutX="856.0" layoutY="22.0" onAction="#getHomeMonth" prefHeight="25.0" prefWidth="165.0" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="order_pane" layoutX="5.0" prefHeight="700.0" prefWidth="1060.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="order_pane" prefHeight="700.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="320.0" prefWidth="620.0" styleClass="card" stylesheets="@DashboardDesign.css" AnchorPane.topAnchor="10.0">
                                        <children>
@@ -151,21 +151,24 @@
                                                 <Text layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="89.13671875">
                                                    <font>
                                                       <Font name="Inter Regular" size="14.0" />
-                                                   </font></Text>
+                                                   </font>
+                                                </Text>
                                                 <TextField fx:id="fname_snd_tf" layoutX="20.0" layoutY="30.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0">
                                                    <font>
                                                       <Font size="14.0" />
-                                                   </font></TextField>
+                                                   </font>
+                                                </TextField>
                                                 <TextField fx:id="lname_snd_tf" layoutX="310.0" layoutY="30.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0">
                                                    <font>
                                                       <Font size="14.0" />
-                                                   </font></TextField>
+                                                   </font>
+                                                </TextField>
                                                 <Text layoutX="20.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" wrappingWidth="153.13671875">
                                                    <font>
                                                       <Font name="Inter Regular" size="14.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="phone_snd_tf" layoutX="20.0" layoutY="95.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0">
+                                                <TextField fx:id="phone_snd_tf" layoutX="20.0" layoutY="95.0" onAction="#submitForm" onKeyTyped="#validatePhone" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -190,10 +193,16 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </TextField>
-                                                <ComboBox fx:id="state_snd_tf" layoutX="22.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                                <ComboBox fx:id="city_snd_tf" layoutX="310.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
-                                                <ComboBox fx:id="town_snd_tf" layoutX="21.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                                <ComboBox fx:id="road_snd_tf" layoutX="309.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
+                                                <Text layoutX="20.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ZIP:" wrappingWidth="153.13671875">
+                                                   <font>
+                                                      <Font name="Inter Regular" size="14.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField fx:id="zip_snd_tf" layoutX="20.0" layoutY="220.0" onAction="#submitForm" onKeyTyped="#validateSenderZip" prefHeight="30.0" prefWidth="560.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </TextField>
                                              </children>
                                           </AnchorPane>
                                           <Text fill="WHITE" layoutX="40.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SENDER">
@@ -227,7 +236,7 @@
                                                       <Font name="Inter Regular" size="14.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="phone_rcv_tf" layoutX="20.0" layoutY="94.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0">
+                                                <TextField fx:id="phone_rcv_tf" layoutX="20.0" layoutY="94.0" onAction="#submitForm" onKeyTyped="#validateReiPhone" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -252,10 +261,16 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </TextField>
-                                                <ComboBox fx:id="state_rcv_tf" layoutX="22.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                                <ComboBox fx:id="city_rcv_tf" layoutX="310.0" layoutY="192.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
-                                                <ComboBox fx:id="town_rcv_id" layoutX="21.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.leftAnchor="20.0" />
-                                                <ComboBox layoutX="309.0" layoutY="232.0" onAction="#submitForm" prefHeight="30.0" prefWidth="270.0" AnchorPane.rightAnchor="20.0" />
+                                                <Text layoutX="20.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ZIP:" wrappingWidth="153.13671875">
+                                                   <font>
+                                                      <Font name="Inter Regular" size="14.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField fx:id="zip_rcv_tf" layoutX="20.0" layoutY="220.0" onAction="#submitForm" onKeyTyped="#validateReceiverZip" prefHeight="30.0" prefWidth="560.0">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                </TextField>
                                              </children>
                                           </AnchorPane>
                                           <Text fill="WHITE" layoutX="40.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RECEIVER">
@@ -352,6 +367,8 @@
                                           <TableView fx:id="tbParcel" fixedCellSize="0.0" onMouseClicked="#showParcelInfo" prefHeight="770.0" prefWidth="575.0" stylesheets="@tableView.css">
                                             <columns>
                                               <TableColumn fx:id="p_id" prefWidth="75.0" text="ID" />
+                                                <TableColumn fx:id="p_sender" prefWidth="75.0" text="Sender" />
+                                                <TableColumn fx:id="p_recipient" prefWidth="75.0" text="Recipient" />
                                                 <TableColumn fx:id="p_cod" prefWidth="75.0" text="COD" />
                                                 <TableColumn fx:id="p_codStatus" prefWidth="75.0" text="COD status" />
                                                 <TableColumn fx:id="p_status" prefWidth="75.0" text="Status" />
@@ -384,11 +401,13 @@
                                                       <ComboBox fx:id="cbSearch" prefHeight="26.0" prefWidth="77.0" promptText="All">
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
-                                                         </HBox.margin></ComboBox>
+                                                         </HBox.margin>
+                                                      </ComboBox>
                                                       <TextField fx:id="searchBar" onAction="#searchTable" onInputMethodTextChanged="#searchTable" onKeyTyped="#searchTable" HBox.hgrow="ALWAYS">
                                                          <HBox.margin>
                                                             <Insets left="8.0" right="10.0" />
-                                                         </HBox.margin></TextField>
+                                                         </HBox.margin>
+                                                      </TextField>
                                                    </children>
                                                    <VBox.margin>
                                                       <Insets top="8.0" />
@@ -450,7 +469,8 @@
                                                 <Separator prefWidth="200.0">
                                                    <VBox.margin>
                                                       <Insets top="16.0" />
-                                                   </VBox.margin></Separator>
+                                                   </VBox.margin>
+                                                </Separator>
                                                 <Label text="Information:">
                                                    <font>
                                                       <Font size="18.0" />
@@ -559,15 +579,15 @@
                                     </VBox>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="report_pane" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="1060.0" style="-fx-background-color: transparent;">
+                              <AnchorPane fx:id="report_pane" prefHeight="700.0" prefWidth="1060.0" style="-fx-background-color: transparent;" visible="false">
                                  <children>
                                     <ScrollPane layoutX="7.0" prefHeight="754.0" prefWidth="1034.0" AnchorPane.bottomAnchor="16.0">
                                        <content>
                                           <AnchorPane prefHeight="1020.0" prefWidth="1010.0" styleClass="scroll-pane" stylesheets="@DashboardDesign.css">
                                              <children>
-                                                <Pane layoutX="14.0" layoutY="14.0" prefHeight="739.0" prefWidth="638.0" styleClass="card" stylesheets="@DashboardDesign.css">
+                                                <Pane layoutX="14.0" layoutY="14.0" prefHeight="739.0" prefWidth="638.0" style="-fx-background-color: D3756B;" styleClass="card" stylesheets="@DashboardDesign.css">
                                                    <children>
-                                                      <PieChart fx:id="w_pieChart" layoutX="69.0" layoutY="51.0" />
+                                                      <PieChart fx:id="w_pieChart" labelsVisible="false" layoutX="43.0" layoutY="27.0" legendSide="LEFT" prefHeight="325.0" prefWidth="551.0" styleClass="chart-legend-item" stylesheets="@DashboardDesign.css" title="Fee for each transportaion type" />
                                                    </children>
                                                 </Pane>
                                                 <VBox layoutX="680.0" layoutY="16.0" prefHeight="739.0" prefWidth="326.0" styleClass="card" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="265.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0">
@@ -625,7 +645,8 @@
                                           </AnchorPane>
                                        </content>
                                     </ScrollPane>
-                                 </children></AnchorPane>
+                                 </children>
+                              </AnchorPane>
                            </children></AnchorPane>
                      </children>
                   </AnchorPane>

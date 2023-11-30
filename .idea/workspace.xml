@@ -6,9 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="fee590f1-1278-4621-9544-f3b8b5b143b5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/dashboard/DashboardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DeliveryManagement/main/Validate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DeliveryManagement/main/Validate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeliveryManagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeliveryManagement.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/Dashboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dashboard/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dashboard/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dashboard/ReportController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Validate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Validate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +59,8 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "HieuDT",
-    "last_opened_file_path": "D:/Study/PTIT/Year 3/OOP/CreditManagement",
-    "project.structure.last.edited": "Libraries",
+    "last_opened_file_path": "D:/Study/PTIT/Year 3/Database/controlsfx-8.40.14/controlsfx-8.40.14.jar",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui"
